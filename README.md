@@ -7,9 +7,10 @@
 ## Problem definition
 The air traffic control manager Zaven Galoyan is facing a major challenge in effectively managing and tracking all the relevant data pertaining to airport operations, such as flight numbers, airplane models, destinations, flight timings, terminal and gate numbers. The current manual system for keeping track of this data is time-consuming, prone to mistakes, and ineffective. The data is easily mixed up and lost, and the urgent need is to create a simple centralized manual system that can assist the air traffic control crew in managing all of this information quickly and effectively without relying on automated inputs.
 ## Success Criteria
-1. Have a personalized login system that has an encrypted password.
-2. Allow multiple different accounts access the same common database which stores all flight information
-3. 
+1. The application will have a login system that checks if the email and password submitted is correct with data validation.
+2. The application will have a register system that registers the inputted username, email, and password without duplicates.
+3. Allow multiple different accounts access the same common database which stores all flight information
+4. 
 ## Design Statement 
 I plan to develop a system for the air traffic crew that will track all relevant data pertaining to airport operations. To accomplish this, I will design and develope the system using Python, Kivymd, and SQlite to provide a comprehensive solution to the challenges faced by the air traffic control in maintaining accurate and up-to-date records of flight information, including airlines, airplanes, destinations, flight timings, terminal and gate numbers, and more. By implementing a centralized manual system, I aim to improve the efficiency and accuracy of tracking this data, reducing the risk of delays, miscommunication, and loss of valuable information. This solution will provide the air traffic control with a reliable and user-friendly tool to manage and track all flight-related information easily, ensuring that airport operations run smoothly and effectively.
 
