@@ -21,12 +21,15 @@ I plan to develop a system for the air traffic crew that will track all relevant
 Considering the challenges my client is facing, in order to effectively track all relevant data related to airport operations, I will develop an easy-to-use centralized manual system that will be designed and developed using Kivymd, Python, and SQlite. This solution is designed to address the challenges faced by the air traffic control in maintaining accurate and up-to-date records of flight information.
 # Criteria B: Design
 
+## System Diagram
+![jojojojojojo](https://user-images.githubusercontent.com/111751273/218300364-847958a7-0dfe-4322-96aa-054a088358a8.png)
 
 
 ## Test Plan
 
 | Test Type | Target | Procedure | Expected Outcome |
 |-----------|--------|-----------|------------------|
+| Functional: |
 | Functional: |
 | Functional: |
 | Non-functional: |
