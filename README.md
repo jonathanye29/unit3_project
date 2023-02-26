@@ -5,10 +5,10 @@
 # Criteria A: Planning
 
 ## Problem definition
-The air traffic control manager Zaven Galoyan is facing a major challenge in effectively managing and tracking all the relevant data pertaining to airport operations, such as flight numbers, airplane models, destinations, flight schedule, terminal and gate numbers. The current manual system for keeping track of this data is time-consuming, prone to mistakes, and ineffective. The data is easily mixed up and lost, and the urgent need is to create a simple centralized manual system that can assist the air traffic control crew in managing all of this information quickly and effectively without relying on automated inputs.
+The air traffic control manager Zaven Galoyan is facing a major challenge in effectively managing and tracking all the relevant data pertaining to airport operations, such as flight numbers, destination/arriving from, flight schedule, terminal and gate numbers. The current manual system for keeping track of this data is time-consuming, prone to mistakes, and ineffective. The data is easily mixed up and lost, and the urgent need is to create a simple centralized manual system that can assist the air traffic control crew in managing all of this information quickly and effectively without relying on automated inputs.
 ## Success Criteria
 1. The application will have a login and register system.
-2. The application will allow the user to input all attributes (flight number, airplane model, destination, flight schedule, terminal, and gate numbers) and will be stored into the database through the interface.
+2. The application will allow the user to input all attributes (flight number, destination/arriving from, flight schedule, terminal, and gate numbers) and will be stored into the database through the interface.
 3. The application will allow user to search for flights by date, flight number, or combined.
 4. The application will allow the user to view all values stored in the database.
 5. The application will have a page with the map of the airport and the location of all flights at their gate.
