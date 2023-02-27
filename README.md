@@ -1,6 +1,6 @@
 # Unit 3: Airport Flight Tracker System
 ![pexels-lt-chan-2833379](https://user-images.githubusercontent.com/111751273/217878429-b0860c83-7789-4ebb-883c-296cb0cf58e1.jpg)
-Pexels image by lt chan [^6]
+Pexels image [1]
 
 # Criteria A: Planning
 
@@ -21,7 +21,7 @@ I plan to develop a system for the air traffic crew using Python, Kivymd, and SQ
 ## Rationale for Proposed Solution
 Considering the challenges my client is facing, in order to effectively track all relevant data related to airport operations, I will develop an easy-to-use centralized manual system that will be designed and developed using Kivymd, Python, and SQLite. This solution is designed to address the challenges faced by the air traffic control in maintaining accurate and up-to-date records of flight information.
 
-Firstly, I decided to use Python because it is the most popular and widely used programming language and it is also among the fastest-growing programming languages in the tech industry [^3]. Additionally, according to CodingNomads, 30% of developers wish to learn Python the most [^4]. As a result of its widespread use, the program is easier for many developers to understand than languages like C or Javascript. This will benefit application in being programmed in Python because it makes it simple for upcoming programmers to comprehend the code and advance its development. There are also a wide range of libraries that are available in Python which can be easily accessed using a basic syntax [^5]. Further, due to how widely used this language is, there is an abundance of resources online that can be easily accessed for progammers to use. 
+Firstly, I decided to use Python because it is the most popular and widely used programming language and it is also among the fastest-growing programming languages in the tech industry [4]. Additionally, according to CodingNomads, 30% of developers wish to learn Python the most [5]. As a result of its widespread use, the program is easier for many developers to understand than languages like C or Javascript. This will benefit application in being programmed in Python because it makes it simple for upcoming programmers to comprehend the code and advance its development. There are also a wide range of libraries that are available in Python which can be easily accessed using a basic syntax [6]. Further, due to how widely used this language is, there is an abundance of resources online that can be easily accessed for progammers to use. 
 
 
 
@@ -30,13 +30,14 @@ Firstly, I decided to use Python because it is the most popular and widely used 
 
 ## System Diagram
 ![jojojojojojo](https://user-images.githubusercontent.com/111751273/218300364-847958a7-0dfe-4322-96aa-054a088358a8.png)
-Fig
+Fig 1. The figure above shows the system diagram for the proposed solution.
 
 ## Wireframe Diagram 
 
 ## ER Diagram
-![projectERdiagram](https://user-images.githubusercontent.com/111751273/221596945-d3fbddbe-cf2a-44f5-9460-0911b59bc81b.jpg)
-Fig. 
+![projectERdiagram](https://user-images.githubusercontent.com/111751273/221607890-1596d013-bce7-429e-8da9-3bda8b66235d.jpg)
+
+Fig 2. This is the ER Diagram showing the two tables: users, allflights. 
 
 ## Flow Diagrams
 ## Test Plan
@@ -75,11 +76,11 @@ Fig.
 
 
 # Citations
-[^1]: “Welcome to KIVYMD's Documentation.” KivyMD 1.1.1 Documentation, Accessed Feburary 9
-[^2]: “SQL Tutorial.” SQL Tutorial, Accessed Feburary 9
-[^3]: Sanyal, Sayantani. 10 Reasons Why Python Is One Of The Best Programming Languages. Accessed Feburary 10, 2023
-[^4]: Why learn python? 6 reasons why it's so hot right now. CodingNomads, 2022, January 19. Accessed Feburary 10, 2023
-[^5]: Advantages and disadvantages of python - how it is dominating Programming World. DataFlair. Accessed Feburary 10 , 2023
-[^6]: Flight Schedule Screen Turned on · Free Stock Photo. https://www.pexels.com/photo/flight-schedule-screen-turned-on-2833379/, Accessed Feb 9
-[^7]: 
+1. Flight Schedule Screen Turned on · Free Stock Photo. https://www.pexels.com/photo/flight-schedule-screen-turned-on-2833379/, Accessed Feb 9
+2. “Welcome to KIVYMD's Documentation.” KivyMD 1.1.1 Documentation, Accessed Feburary 9
+3. “SQL Tutorial.” SQL Tutorial, Accessed Feburary 9
+4. Sanyal, Sayantani. 10 Reasons Why Python Is One Of The Best Programming Languages. Accessed Feburary 10, 2023
+5. Why learn python? 6 reasons why it's so hot right now. CodingNomads, 2022, January 19. Accessed Feburary 10, 2023
+6. Advantages and disadvantages of python - how it is dominating Programming World. DataFlair. Accessed Feburary 10 , 2023
+
 
