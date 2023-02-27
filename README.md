@@ -68,6 +68,7 @@ Fig 2. This is the ER Diagram showing the two tables: users, allflights.
 12	|	Create 'Add Flight' page	|	Have a page that allows the user to add flights into the 'allflights' table within the database	|	2 hours	|	2/23/2023	|	C
 13	|	Draw an ER Diagram and write an explaination of the diagram	|	Have a clear ER Diagram that accurately represents the different attributes and values with a brief explanation	|	45 minutes	|	2/27/2023	|	B
 
+# Criteria C
 ## Techniques Used
 
 
