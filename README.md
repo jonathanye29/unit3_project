@@ -65,9 +65,15 @@ Fig 2. This is the ER Diagram showing the two tables: users, allflights.
 9	|	Create a login and registration system	|	To create a program that allows the user to register and login to the application using a username and password they set up	|	1 hour	|	2/13/2023	|	C
 10	|	Create password encryption	|	Using 'sha256' to encrypt password and check password in login and registration	|	45 minutes	|	2/13/2023	|	C
 11	|	Create table for all flights	|	To have a table inside the database that includes all flight data	|	15 minutes	|	2/25/2023	|	C
-12	|	Create 'Add Flight' page	|	Have a page that allows the user to add flights into the 'allflights' table within the database	|	2 hours	|	2/23/2023	|	C
+12	|	Create an add flight page	|	Have a page that allows the user to add flights into the 'allflights' table within the database	|	2 hours	|	2/23/2023	|	C
 13	|	Draw an ER Diagram and write an explaination of the diagram	|	Have a clear ER Diagram that accurately represents the different attributes and values with a brief explanation	|	45 minutes	|	2/27/2023	|	B
 14	|	Create search system for specific flights	|	Allow the user to search for specific flights by flight number and date.	|	1 hour	|	2/28/2023	|	C
+15	|	Draw a wire frame and write an explanation of it	|	Have a clear wire frame that accurately represents and describes the application and have a brief explanation	|	1 hour	|	2/28/2023	|	B
+16	|	Create airport map page	|	Create a page that shows a map of the airport and the current date's flights at their gate	|	3 hours	|	3/1/2023	|	C
+17	|	Create flight history page	|	Create a page that shows all values stored within the database	|	1 hour	|	3/1/2023	|	C
+18	|	Complete finishing touches on all buttons in the application	|	Making sure that each button executes the expected task and is accurately displayed within the application	|	2 hours	|	3/1/2023	|	C
+19	|	Create table displaying the results of searched flights	|	Retrieving requested data from the database of all flights, and displaying them in an organized table 	|	2 hours	|	3/1/2023	|	C
+20	|	Follow up meeting with client	|	Showing the application to the client and to ask for their opinion on the applications current progress	|	10 minutes	|	3/1/2023	|	A
 
 # Criteria C
 ## Techniques Used
