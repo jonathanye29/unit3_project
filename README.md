@@ -33,7 +33,7 @@ Firstly, I decided to use Python because it is the most popular and widely used 
 Fig 1. The figure above shows the system diagram for the proposed solution.
 
 ## Wireframe Diagram 
-![unit3projectwireframe](https://user-images.githubusercontent.com/111751273/222181694-f7ccc301-d8a2-4c75-a8b5-2782d7770b00.jpg)
+![project3wireframe](https://user-images.githubusercontent.com/111751273/222183981-e5c23a00-11df-4f00-8393-bb5c2cb1d2c7.jpg)
 Fig 2. 
 ## ER Diagram
 ![projectERdiagram](https://user-images.githubusercontent.com/111751273/221607890-1596d013-bce7-429e-8da9-3bda8b66235d.jpg)
