@@ -1,6 +1,6 @@
 # Unit 3: Airport Flight Tracker System
 ![pexels-lt-chan-2833379](https://user-images.githubusercontent.com/111751273/217878429-b0860c83-7789-4ebb-883c-296cb0cf58e1.jpg)
-Pexels image [1]
+<i>Pexels image</i> [1]
 
 # Criteria A: Planning
 
