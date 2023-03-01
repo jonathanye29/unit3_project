@@ -169,7 +169,12 @@ class LoginScreen(MDScreen):
             else:
                 print("Passwords don't match")
 
-
+        if len(result) == 0:
+            dialog = MDDialog(title="User not found",
+                              text=f"Username '{self.ids.uname.text}' does not have an account.")
+            dialog.open()
+            self.ids.uname.text = ""
+            self.ids.passwd.text = ""
 
 
     def try_register(self):
@@ -219,6 +224,10 @@ class SignupScreen(MDScreen):
 
     def cancel(self):
         self.parent.current = "LoginScreen"
+        self.ids.uname.text = ""
+        self.ids.email.text = ""
+        self.ids.passwd.text = ""
+        self.ids.passwd_confirm.text = ""
 
 class AddFlight(MDScreen):
     def add_flight(self):
@@ -330,7 +339,7 @@ class FlightHistory(MDScreen):
             use_pagination = True,
             check = True,
             column_data = [("ID", 40), ("Flight Number", 50), ("Destination", 40),
-                           ("Arriving from", 45), ("Flight Schedule", 30), ("Terminal", 30), ("Gate Number", 30), ("Status", 30)]
+                           ("Date", 45), ("Flight Schedule", 30), ("Terminal", 30), ("Gate Number", 30), ("Status", 30)]
         )
         #add the table
         self.data_table.bind(on_row_press=self.row_pressed)
@@ -478,6 +487,8 @@ class unit3project(MDApp):
     def build(self):
         return
 
+
+
 test = unit3project()
 test.run()
 ```
@@ -580,7 +591,7 @@ ScreenManager:
 
             MDRaisedButton:
                 id: signup
-                text: "Signup"
+                text: "Register"
                 on_press: root.try_register()
                 size_hint: .3, .4
                 md_bg_color: "#8dbcd6"
@@ -649,9 +660,9 @@ ScreenManager:
             size_hint: 1, .1
 
             MDRaisedButton:
-                id:register_cancel
-                text: "Return home"
-                on_press: root.cancel()
+                id: register_submit
+                text: "Submit"
+                on_press: root.try_register()
                 size_hint: .3, .65
                 md_bg_color: "#8dbcd6"
 
@@ -659,9 +670,9 @@ ScreenManager:
                 size_hint: .3, 1
 
             MDRaisedButton:
-                id: register_submit
-                text: "Submit"
-                on_press: root.try_register()
+                id:register_cancel
+                text: "Cancel"
+                on_press: root.cancel()
                 size_hint: .3, .65
                 md_bg_color: "#8dbcd6"
 
@@ -755,10 +766,6 @@ ScreenManager:
             size_hint: 1, .05
             halign: "center"
             pos_hint: {"center_x": .5, "center_y": .5}
-
-#        MDBoxLayout:
-#            orientation: "vertical"
-#            size_hint: 1, .9
 
         MDTextField:
             id: flight_number
@@ -880,7 +887,7 @@ ScreenManager:
 
                 MDRaisedButton:
                     id: return_home
-                    text: "Return Home"
+                    text: "Return home"
                     size_hint: .2, 0.65
                     pos_hint: {"center_y": .7}
                     on_press: app.root.current = 'Homepage'
@@ -904,7 +911,7 @@ ScreenManager:
 
         MDLabel:
             text: "Search Flight"
-            font_style: "H2"
+            font_style: "H3"
             size_hint: 1, .4
             halign: "center"
             pos_hint: {"center_x": .5, "center_y": .5}
@@ -965,7 +972,6 @@ ScreenManager:
 
         MDLabel:
             text: "Airport Map"
-            underline: True
             font_style: "H3"
             size_hint: 1, .8
             halign: "center"
