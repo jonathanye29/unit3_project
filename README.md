@@ -33,6 +33,7 @@ Firstly, I decided to use Python because it is the most popular and widely used 
 Fig 1. The figure above shows the system diagram for the proposed solution.
 
 ## Wireframe Diagram 
+![unit3projectwireframe](https://user-images.githubusercontent.com/111751273/222181694-f7ccc301-d8a2-4c75-a8b5-2782d7770b00.jpg)
 Fig 2. 
 ## ER Diagram
 ![projectERdiagram](https://user-images.githubusercontent.com/111751273/221607890-1596d013-bce7-429e-8da9-3bda8b66235d.jpg)
@@ -100,13 +101,13 @@ Fig 6.
 # Appendix
 
 ### Evidence of Consultation
-1. <img width="888" alt="Screen Shot 2023-03-01 at 12 03 11 PM" src="https://user-images.githubusercontent.com/111751273/222034489-3c8880e5-e7d3-47bd-8aab-dc20a27f228b.png">
-Fig . Client approval of proposed success critereas
 
-2. <img width="1173" alt="Screen Shot 2023-03-01 at 12 12 44 PM" src="https://user-images.githubusercontent.com/111751273/222035637-e178d390-664c-4789-93bd-48b542e8c634.png">
-Fig . Clients satisfaction of the application during development process
+#### Client approval of proposed success critereas
+<img width="888" alt="Screen Shot 2023-03-01 at 12 03 11 PM" src="https://user-images.githubusercontent.com/111751273/222034489-3c8880e5-e7d3-47bd-8aab-dc20a27f228b.png">
 
-3. 
+#### Clients satisfaction of the application during development process
+<img width="1173" alt="Screen Shot 2023-03-01 at 12 12 44 PM" src="https://user-images.githubusercontent.com/111751273/222035637-e178d390-664c-4789-93bd-48b542e8c634.png">
+
 
 ## Python Code
 ### Main Project Code
