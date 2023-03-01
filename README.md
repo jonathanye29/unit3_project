@@ -30,23 +30,26 @@ Firstly, I decided to use Python because it is the most popular and widely used 
 
 ## System Diagram
 ![jojojojojojo](https://user-images.githubusercontent.com/111751273/218300364-847958a7-0dfe-4322-96aa-054a088358a8.png)
-Fig 1. The figure above shows the system diagram for the proposed solution.
+Fig. 1 The figure above shows the system diagram for the proposed solution. It serves as a visual representation of the system and its components, and their relationships to each other. As shown above, the application will run on Python and KivyMD. The application will have various inputs from the user, which will all be stored within a database using SQLite. All of this will be executed within the Pycharm application, which will then display the output on a screen.
 
 ## Wireframe Diagram 
 ![project3wireframe](https://user-images.githubusercontent.com/111751273/222183981-e5c23a00-11df-4f00-8393-bb5c2cb1d2c7.jpg)
-Fig 2. 
+Fig. 2 This is the wireframe for the application. 
+
+As showing above in Fig. 2, the wireframe details how the application will look. The wireframe also details the plan of how different screens will appear through different buttons. The arrows that extend from the button to the screen serve to show the user which screen will open when they press and release the button. However, with two exceptions, the 'Search Flight' screen and the 'Airport Map' screen both open a pop-up window when the user clicks on the 'Search' (Search Flight Screen) or 'Show Map' (Airport Flight Map Screen) button. The purpose of this wireframe diagram is to give a visual representation of the user interface design that outlines the structure and layout of the application.
+
 ## ER Diagram
 ![projectERdiagram](https://user-images.githubusercontent.com/111751273/221607890-1596d013-bce7-429e-8da9-3bda8b66235d.jpg)
 
-Fig 3. This is the ER Diagram showing the two tables: users, allflights. 
+Fig. 3 This is the ER Diagram showing the two tables: users, allflights. 
 
 ## Flow Diagrams
 
-Fig 4.
+Fig. 4
 
-Fig 5.
+Fig. 5
 
-Fig 6.
+Fig. 6
 ## Test Plan
 
 | Test Type | Target | Procedure | Expected Outcome |
