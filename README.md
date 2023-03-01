@@ -33,13 +33,19 @@ Firstly, I decided to use Python because it is the most popular and widely used 
 Fig 1. The figure above shows the system diagram for the proposed solution.
 
 ## Wireframe Diagram 
-
+Fig 2. 
 ## ER Diagram
 ![projectERdiagram](https://user-images.githubusercontent.com/111751273/221607890-1596d013-bce7-429e-8da9-3bda8b66235d.jpg)
 
-Fig 2. This is the ER Diagram showing the two tables: users, allflights. 
+Fig 3. This is the ER Diagram showing the two tables: users, allflights. 
 
 ## Flow Diagrams
+
+Fig 4.
+
+Fig 5.
+
+Fig 6.
 ## Test Plan
 
 | Test Type | Target | Procedure | Expected Outcome |
@@ -93,6 +99,15 @@ Fig 2. This is the ER Diagram showing the two tables: users, allflights.
 
 # Appendix
 
+### Evidence of Consultation
+1. <img width="888" alt="Screen Shot 2023-03-01 at 12 03 11 PM" src="https://user-images.githubusercontent.com/111751273/222034489-3c8880e5-e7d3-47bd-8aab-dc20a27f228b.png">
+Fig . Client approval of proposed success critereas
+
+2. <img width="1173" alt="Screen Shot 2023-03-01 at 12 12 44 PM" src="https://user-images.githubusercontent.com/111751273/222035637-e178d390-664c-4789-93bd-48b542e8c634.png">
+Fig . Clients satisfaction of the application during development process
+
+3. 
+
 ## Python Code
 ### Main Project Code
 ```.py
@@ -103,7 +118,9 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.datatables import MDDataTable
 from kivymd.uix.button import MDRectangleFlatButton
 from kivymd.uix.dialog import MDDialog
+import matplotlib.pyplot as plt
 from datetime import datetime
+from datetime import date
 
 class database_worker:
     def __init__(self,name):
@@ -359,7 +376,7 @@ class SearchFlight(MDScreen):
     def close_table(self, *args):
         self.remove_widget(self.data_table)
         self.remove_widget(self.close_button)
-    
+
     def cancel(self):
         self.parent.current = "Homepage"
         self.ids.flight_number.text = ""
@@ -367,7 +384,64 @@ class SearchFlight(MDScreen):
 
 class AirportMap(MDScreen):
     def show_map(self):
-        import airportmap
+        # Define the airport layout
+        fig, ax = plt.subplots(figsize=(10, 10))
+        ax.set_xlim([0, 10])
+        ax.set_ylim([0, 10])
+        ax.set_xticks([])
+        ax.set_yticks([])
+
+        # Add terminals
+        ax.add_patch(plt.Rectangle((1, 1), 2, 2, facecolor='#C0C0C0', edgecolor='black'))
+        ax.text(2, 3.2, 'Terminal 1', ha='center', va='center', fontsize=12, fontweight='bold')
+        ax.add_patch(plt.Rectangle((5, 1), 2, 2, facecolor='#C0C0C0', edgecolor='black'))
+        ax.text(6, 3.2, 'Terminal 2', ha='center', va='center', fontsize=12, fontweight='bold')
+
+        # Add runway
+        ax.add_patch(plt.Rectangle((2, 4), 6, 1, facecolor='#808080', edgecolor='black'))
+        ax.add_patch(plt.Rectangle((2, 5), 6, 1, facecolor='#808080', edgecolor='black'))
+        ax.text(5, 4.5, 'Runway 1', ha='center', va='center', fontsize=12, fontweight='bold')
+        ax.text(5, 5.5, 'Runway 2', ha='center', va='center', fontsize=12, fontweight='bold')
+
+        # Add gates
+        gates = {
+            'Gate A1': [1.5, 2.5],
+            'Gate A2': [2.5, 2.5],
+            'Gate A3': [1.5, 1.5],
+            'Gate A4': [2.5, 1.5],
+            'Gate B1': [5.5, 2.5],
+            'Gate B2': [6.5, 2.5],
+            'Gate B3': [5.5, 1.5],
+            'Gate B4': [6.5, 1.5],
+
+        }
+
+        for gate, pos in gates.items():
+            ax.text(pos[0], pos[1], gate, ha='center', va='center', fontsize=10, fontweight='bold')
+            ax.add_patch(plt.Rectangle((pos[0] - 0.5, pos[1] - 0.5), 1, 1, facecolor='#F0E68C', edgecolor='black'))
+
+        today = date.today()
+        today = today.strftime("%m/%d/%Y")
+        db = database_worker('unit3project.db')
+        query = f"SELECT flight_number, gate_number FROM allflights where date = '{today}'"
+        data = db.search(query)
+        db.close()
+
+        # Add the flight number to the gate on the graph
+        for flight in data:
+            flight_number = flight[0]
+            gate_number = flight[1]
+            gate_pos = gates['Gate ' + gate_number]
+            if gate_number in ['A1', 'A3', 'B1', 'B3']:
+                ax.text(gate_pos[0] - 1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10,
+                        fontweight='bold', color='red')
+            else:
+                ax.text(gate_pos[0] + 1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10,
+                        fontweight='bold', color='red')
+
+        # Show the plot
+        plt.show()
+
         self.parent.current = "Homepage"
         return
 
@@ -398,91 +472,8 @@ class unit3project(MDApp):
     def build(self):
         return
 
-
-
 test = unit3project()
 test.run()
-```
-
-### Airport Map Code
-```.py
-import matplotlib.pyplot as plt
-import sqlite3
-from datetime import date
-
-# Database worker
-class database_worker:
-    def __init__(self,name):
-        self.connection = sqlite3.connect(name)
-        self.cursor = self.connection.cursor()
-
-    def search(self, query):
-        result = self.cursor.execute(query).fetchall()
-        return result
-
-    def run_save(self,query):
-        self.cursor.execute(query)
-        self.connection.commit()
-
-    def close(self):
-        self.connection.close()
-
-# Define the airport layout
-fig, ax = plt.subplots(figsize=(10, 10))
-ax.set_xlim([0, 10])
-ax.set_ylim([0, 10])
-ax.set_xticks([])
-ax.set_yticks([])
-
-# Add terminals
-ax.add_patch(plt.Rectangle((1, 1), 2, 2, facecolor='#C0C0C0', edgecolor='black'))
-ax.text(2, 3.2, 'Terminal 1', ha='center', va='center', fontsize=12, fontweight='bold')
-ax.add_patch(plt.Rectangle((5, 1), 2, 2, facecolor='#C0C0C0', edgecolor='black'))
-ax.text(6, 3.2, 'Terminal 2', ha='center', va='center', fontsize=12, fontweight='bold')
-
-# Add runway
-ax.add_patch(plt.Rectangle((2, 4), 6, 1, facecolor='#808080', edgecolor='black'))
-ax.add_patch(plt.Rectangle((2, 5), 6, 1, facecolor='#808080', edgecolor='black'))
-ax.text(5, 4.5, 'Runway 1', ha='center', va='center', fontsize=12, fontweight='bold')
-ax.text(5, 5.5, 'Runway 2', ha='center', va='center', fontsize=12, fontweight='bold')
-
-# Add gates
-gates = {
-    'Gate A1': [1.5, 2.5],
-    'Gate A2': [2.5, 2.5],
-    'Gate A3': [1.5, 1.5],
-    'Gate A4': [2.5, 1.5],
-    'Gate B1': [5.5, 2.5],
-    'Gate B2': [6.5, 2.5],
-    'Gate B3': [5.5, 1.5],
-    'Gate B4': [6.5, 1.5],
-
-}
-
-for gate, pos in gates.items():
-    ax.text(pos[0], pos[1], gate, ha='center', va='center', fontsize=10, fontweight='bold')
-    ax.add_patch(plt.Rectangle((pos[0]-0.5, pos[1]-0.5), 1, 1, facecolor='#F0E68C', edgecolor='black'))
-
-today = date.today()
-today= today.strftime("%m/%d/%Y")
-db = database_worker('unit3project.db')
-query = f"SELECT flight_number, gate_number FROM allflights where date = '{today}'"
-data = db.search(query)
-db.close()
-
-# Add the flight number to the gate on the graph
-for flight in data:
-    flight_number = flight[0]
-    gate_number = flight[1]
-    gate_pos = gates['Gate ' + gate_number]
-    if gate_number in ['A1', 'A3', 'B1', 'B3']:
-        ax.text(gate_pos[0]-1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10, fontweight='bold', color = 'red')
-    else:
-        ax.text(gate_pos[0]+1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10, fontweight='bold', color = 'red')
-
-
-# Show the plot
-plt.show()
 ```
 
 ## KV Code
