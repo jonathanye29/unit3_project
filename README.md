@@ -85,7 +85,7 @@ Fig. 7
 3. Object Relational Mapping (ORM): SQLite
 4. For loops
 5. If statements
-6. Functions
+6. Methods
 
 1. The application will have a login and register system.
 2. The application will allow the user to input all attributes (flight number, destination, flight schedule, terminal, and gate number) and will be stored into the database through the interface.
@@ -124,6 +124,80 @@ ScreenManager:
 ```
 The client requires an application that allows them to record and store flight information. Developing a user interface is best fit for thier need as it is easier to use and visually appealing. Above is the KV code showing the ScreenManager, which defines the names and ids of each screen in the application.
 
+## Homepage
+```.kv
+<Homepage>:
+    size:500,500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .5, .9
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(50)
+        md_bg_color: "#F4F4F6"
+
+        MDLabel:
+            text: "Welcome to Air Traffic Control"
+            underline: True
+            font_style: "H5"
+            size_hint: 1, .1
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, .9
+            spacing: 50
+
+            MDFillRoundFlatIconButton:
+                icon: "airplane-takeoff"
+                text: "Add Flight"
+                on_release: app.root.current = 'AddFlight'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+
+            MDFillRoundFlatIconButton:
+                icon: "history"
+                text: "Flight History"
+                on_release: app.root.current = 'FlightHistory'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDFillRoundFlatIconButton:
+                icon: "airplane-search"
+                text: "Search Flight"
+                on_release: app.root.current = 'SearchFlight'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDFillRoundFlatIconButton:
+                icon: "map-marker"
+                text: "Airport Flight Map"
+                on_release: app.root.current = 'AirportMap'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDFillRoundFlatIconButton:
+                icon: "information"
+                text: "Flight Statistics"
+                on_release: app.root.current = 'FlightStatistics'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDFillRoundFlatIconButton:
+                id: logout_button
+                text: "Logout"
+                icon: "logout"
+                on_release: app.root.current = 'LoginScreen'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+```
+The KV code above details what the homepage screen of the client's application will look like. It includes buttons that will direct the user to all the defined pages in the ScreenManager. The homepage screen is simple and visually appealing, fitting the client's needs for professionality and clean aesthetic appearance.
+
 ## Login System
 ```.py
 # Class responsible for the Login MDScreen
@@ -160,7 +234,7 @@ class LoginScreen(MDScreen):
             self.ids.uname.text = ""
             self.ids.passwd.text = ""
 ```
-This is the program used for the login system. This program is used to meet the clients needs of having a loging system. The login in system has to verify if the username exists or doesn't, then check if the inputted password matches with the password stored in the databse. If the credentials entered are accurate and exist, the program will take the user to the homepage. However, if the username entered does not exist, a pop up message will appear showing that the account does not exist.
+This is the program used for the login system. This program is used to meet the clients needs of having a loging system. The login in system has to verify if the username exists or doesn't, then check if the inputted password matches with the password stored in the databse. This meets the first criteria of having a login system. Besides having just a basic login system, I added validation so if the username entered does not exist, a pop up message will appear showing that the account does not exist. This increases both the professionality and quality of the application for the client.
 
 ## Login Screen
 ```.kv
@@ -293,7 +367,7 @@ class SignupScreen(MDScreen):
             self.ids.passwd.text = ""
             self.ids.passwd_confirm.text = ""
 ```
-The code above details the register system requested by the client. The function above is used to check that inputted information is correct and unique for registration. After that, that information will be inputted in the database with an encrypted password.
+The code above details the register system requested by the client. The function above is used to check that inputted information is correct and unique for registration. After that, that information will be inputted in the database with an encrypted password. This meets the first succes criteriea of having a registration system. Besides just having a basic registration system that stores user information into a database, I had added validation for my client to make it more professional. When the inputted username already exists, a pop up message will appear notifying the user.
 
 ## Add Flight System
 ```.py
@@ -374,9 +448,107 @@ class AddFlight(MDScreen):
         except ValueError:
             self.ids.date.error = True
 ```
-The is the program used to add flights into the database. The client requested to have a system that allows the them to enter flight information and store them. To reduce the possibility of user-mistakes, I had validated the input information, so if the user does make a mistake, error messages will appear, allowing the user to correct the mistakes. The biggest challenge when creating validation for inputs was the date. After doing research, importing the datetime library was the best option as it makes it easier to choose a specific format of the date I would have liked to validate [12].
+The is the program used to add flights into the database. The client requested to have a system that allows the them to enter flight information and store them. To reduce the possibility of user-mistakes, I had validated the input information, so if the user does make a mistake, error messages will appear, allowing the user to correct the mistakes. The biggest challenge when creating validation for inputs was the date. After doing research, importing the datetime library was the best option as it makes it easier to choose a specific format of the date I would have liked to validate [12]. The Add Flight system fulfills the second criteria, by having the application allow the user to input all attributes (flight number, destination, flight schedule, terminal, and gate number) and store them into the database. 
 
-## 
+## Search Flight System
+```.py
+# Class responsible for the Search Flight MDScreen
+class SearchFlight(MDScreen):
+    data_table = None
+
+    # Retrieves the data from the database based on the flight number or date entered
+    def search(self):
+        self.data_table = MDDataTable(
+            size_hint=(.9, .8),
+            pos_hint={"center_x": .5, "center_y": .5},
+            use_pagination=False,
+            check=True,
+            column_data=[("ID", 40), ("Flight Number", 50), ("Destination", 40)
+                ,("Date", 45) ,("Flight Schedule", 30), ("Terminal", 30), ("Gate Number", 30),
+                ("Status", 30)]
+        )
+
+        db = database_worker("unit3project.db")
+        query = f"SELECT * FROM allflights WHERE flight_number = '{self.ids.flight_number.text}' or date = '{self.ids.date.text}'"
+        print(query)
+        data = db.search(query)
+        db.close()
+        # If no data is returned, display an error message
+        if len(data) == 0:
+            self.ids.flight_number.error = True
+            self.ids.date.error = True
+            return
+        # If data is returned, display the table
+        else:
+            self.data_table.update_row_data(None, data)
+            self.add_widget(self.data_table)
+            self.ids.flight_number.text = ""
+            self.ids.date.text = ""
+```
+The program above details how the application will access the database and search for the flight the user is looking for. This fulfills the third criteria by allowing the user to search for flights by date and flight number. The program meets the clients needs of being able to locate specific flights. I was able do this by qeurying the specific flight numbers and dates the user was searching for, and outputting them into a table. 
+
+## Airport Flight Map System
+```.py
+    def show_map(self):
+        # Define the airport layout
+        fig, ax = plt.subplots(figsize=(10, 10))
+        ax.set_xlim([0, 10])
+        ax.set_ylim([0, 10])
+        ax.set_xticks([])
+        ax.set_yticks([])
+
+        # Add terminals
+        ax.add_patch(plt.Rectangle((1, 1), 2, 2, facecolor='#C0C0C0', edgecolor='black'))
+        ax.text(2, 3.2, 'Terminal 1', ha='center', va='center', fontsize=12, fontweight='bold')
+        ax.add_patch(plt.Rectangle((5, 1), 2, 2, facecolor='#C0C0C0', edgecolor='black'))
+        ax.text(6, 3.2, 'Terminal 2', ha='center', va='center', fontsize=12, fontweight='bold')
+
+        # Add runway
+        ax.add_patch(plt.Rectangle((2, 4), 6, 1, facecolor='#808080', edgecolor='black'))
+        ax.add_patch(plt.Rectangle((2, 5), 6, 1, facecolor='#808080', edgecolor='black'))
+        ax.text(5, 4.5, 'Runway 1', ha='center', va='center', fontsize=12, fontweight='bold')
+        ax.text(5, 5.5, 'Runway 2', ha='center', va='center', fontsize=12, fontweight='bold')
+
+        # Add gates
+        gates = {
+            'Gate A1': [1.5, 2.5],
+            'Gate A2': [2.5, 2.5],
+            'Gate A3': [1.5, 1.5],
+            'Gate A4': [2.5, 1.5],
+            'Gate B1': [5.5, 2.5],
+            'Gate B2': [6.5, 2.5],
+            'Gate B3': [5.5, 1.5],
+            'Gate B4': [6.5, 1.5],
+
+        }
+
+        for gate, pos in gates.items():
+            ax.text(pos[0], pos[1], gate, ha='center', va='center', fontsize=10, fontweight='bold')
+            ax.add_patch(plt.Rectangle((pos[0] - 0.5, pos[1] - 0.5), 1, 1, facecolor='#F0E68C', edgecolor='black'))
+
+        today = date.today()
+        today = today.strftime("%m/%d/%Y")
+        db = database_worker('unit3project.db')
+        query = f"SELECT flight_number, gate_number FROM allflights where date = '{today}'"
+        data = db.search(query)
+        db.close()
+
+        # Add the flight number to the gate on the graph
+        for flight in data:
+            flight_number = flight[0]
+            gate_number = flight[1]
+            gate_pos = gates['Gate ' + gate_number]
+            if gate_number in ['A1', 'A3', 'B1', 'B3']:
+                ax.text(gate_pos[0] - 1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10,
+                        fontweight='bold', color='red')
+            else:
+                ax.text(gate_pos[0] + 1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10,
+                        fontweight='bold', color='red')
+
+        # Show the plot
+        plt.show()
+```
+The program above shows how the application displays a labelled map of the airport with all the flights at their assigned gates.  
 
 # Criteria D: Functionality
 
@@ -393,8 +565,8 @@ The is the program used to add flights into the database. The client requested t
 9. Gomathy, Kavya. "5 Reasons to Use SQLite, the Tiny Giant for Your Next Project." Medium, The Startup, 4 Jan. 2022, https://medium.com/swlh/5-reasons-to-use-sqlite-the-tiny-giant-for-your-next-project-a6bc384b2df4. Accessed Feburary 10, 2023
 10. Yegulalp, Serdar. "Why You Should Use SQLite." InfoWorld, IDG Communications, Inc., 13 Feb. 2019, https://www.infoworld.com/article/3331923/why-you-should-use-sqlite.html. Accessed Feburary 10, 2023
 11. "SQLite Advantages and Disadvantages." javatpoint, n.d., https://www.javatpoint.com/sqlite-advantages-and-disadvantages. Accessed Feburary 10, 2023
-12. 
-13. ChatGPT. OpenAI, 2023, https://openai.com/.
+12. Python Software Foundation. “datetime — Basic Date and Time Types.” Python 3 Documentation, 2021, https://docs.python.org/3/library/datetime.html. Accessed March 2, 2023
+13. ChatGPT. OpenAI, 2023, https://openai.com/. Accessed March 2, 2023
 
 
 # Appendix
