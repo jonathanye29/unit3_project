@@ -146,25 +146,28 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from datetime import date
 
+#Class used to connect with and perform tasks on an SQLite3 database
 class database_worker:
-    def __init__(self,name):
-        self.connection = sqlite3.connect(name)
-        self.cursor = self.connection.cursor()
+    def __init__(self, name):  # name of the sqlite3 db file
+        self.connection = sqlite3.connect(name)  # Establish a connection
+        self.cursor = self.connection.cursor()  # Create an object that will act as a cursor to perform commands
 
-    def search(self, query):
-        result = self.cursor.execute(query).fetchall()
-        return result
+    def search(self, query):  # Function for searching inside the db
+        result = self.cursor.execute(query).fetchall()  # Run a query and fetch the result
+        return result  # Return the found result
 
-    def run_save(self,query):
-        self.cursor.execute(query)
-        self.connection.commit()
+    def run_save(self, query):  # Function to save information to the db
+        self.cursor.execute(query)  # Execute a query
+        self.connection.commit()  # Save changes to the db
 
-    def close(self):
+    def close(self):  # Close the connection to the db
         self.connection.close()
 
+# Class responsible for the Homepage MDScreen
 class Homepage(MDScreen):
     pass
 
+# Class responsible for the Login MDScreen
 class LoginScreen(MDScreen):
     def try_login(self):
         if self.ids.uname.text == "":
@@ -203,6 +206,7 @@ class LoginScreen(MDScreen):
         self.show_password = not self.show_password
         self.ids.passwd.password = not self.show_password
 
+# Class responsible for the Signup MDScreen
 class SignupScreen(MDScreen):
     def try_register(self):
 
@@ -247,6 +251,7 @@ class SignupScreen(MDScreen):
         self.ids.passwd.text = ""
         self.ids.passwd_confirm.text = ""
 
+# Class responsible for the Add Flight MDScreen
 class AddFlight(MDScreen):
     def add_flight(self):
         checker = True
@@ -327,6 +332,7 @@ class AddFlight(MDScreen):
     def cancel(self):
         self.parent.current = "Homepage"
 
+# Class responsible for the Flight History MDScreen
 class FlightHistory(MDScreen):
     data_table = None
 
@@ -372,6 +378,7 @@ class FlightHistory(MDScreen):
     def check_pressed(self, table, current_row):
         print("Check pressed", current_row)
 
+# Class responsible for the Search Flight MDScreen
 class SearchFlight(MDScreen):
     data_table = None
     def search(self):
@@ -415,6 +422,7 @@ class SearchFlight(MDScreen):
         self.ids.flight_number.text = ""
         self.ids.date.text = ""
 
+# Class responsible for the Airport Map MDScreen
 class AirportMap(MDScreen):
     def show_map(self):
         # Define the airport layout
@@ -481,6 +489,7 @@ class AirportMap(MDScreen):
     def cancel(self):
         self.parent.current = "Homepage"
 
+# Class responsible for the Flight Statistics MDScreen
 class FlightStatistics(MDScreen):
     def on_pre_enter(self, *args):
         db = database_worker("unit3project.db")
@@ -501,14 +510,15 @@ class FlightStatistics(MDScreen):
         self.ids.delayed.text = f"Percent of flights delayed: {percent_delayed:.2f}%"
         self.ids.cancelled.text = f"Percent of flights cancelled: {percent_cancelled:.2f}%"
 
+# This class defines the main application for the Unit 3 project.
 class unit3project(MDApp):
     def build(self):
         return
 
 
-
 test = unit3project()
 test.run()
+
 ```
 
 ## KV Code
