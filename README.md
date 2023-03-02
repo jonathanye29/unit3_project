@@ -46,8 +46,11 @@ As showing above in Fig. 2, the wireframe details how the application will look.
 
 ## ER Diagram
 ![projectERdiagram](https://user-images.githubusercontent.com/111751273/221607890-1596d013-bce7-429e-8da9-3bda8b66235d.jpg)
-
 <i>Fig. 3</i> This is the ER Diagram showing the two tables: users, allflights. 
+
+## UML Diagram
+![project3UML](https://user-images.githubusercontent.com/111751273/222326940-44a828f3-8926-4e44-aee1-0fdad55b9664.jpeg)
+<i>Fig. 4</i> This is the UML Diagram showing all the classes and methods that were used in the development of the application.
 
 ## Flow Diagrams
 
