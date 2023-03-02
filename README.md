@@ -61,36 +61,23 @@ Fig. 6
 Fig. 7
 ## Test Plan
 
-| Description  | Input | Expected Output |
-|-----------|------|------------------|
-1	|	Meet with the client	|	Talk with the client to dicuss the problems they are facing and brainstorm solutions to create a plan to help the client resolve the problems.	|	15 minutes	|	2/9/2023	|	A
-2	|	Brainstorm and write the problem definition	|	A clear problem definition of what the client is facing.	|	15 minutes	|	2/9/2023	|	A
-3	|	Rationale for Proposed Solution	|	A clear justification that suits the client and developer.	|	15 minutes	|	2/10/2023	|	A
-4	|	"Brainstorm and write down success criterias	"	|	A clear success criteria that suits the client and resolves the problem	|	20 minutes	|	2/10/2023	|	A
-5	|	Brainstorm and write down a design statement for the client        	|	A clear design statement that suits the need of the client	|	15 minutes	|	2/10/2023	|	A
-6	|	Write the rationale for proposed solution 	|	A clear justification that suits the client and developer.	|	30 minutes	|	2/10/2023	|	A
-7	|	Create system diagram        	|	To have a clear idea of the hardware and software requirements for the proposed solution	|	45 minutes	|	2/10/2023	|	B
-8	|	Follow up meeting with client	|	Present success criteria to client to get the approval	|	20 minutes	|	2/13/2023	|	A
-9	|	Create a login and registration system	|	To create a program that allows the user to register and login to the application using a username and password they set up	|	1 hour	|	2/13/2023	|	C
-10	|	Create password encryption	|	Using 'sha256' to encrypt password and check password in login and registration	|	45 minutes	|	2/13/2023	|	C
-11	|	Create table for all flights	|	To have a table inside the database that includes all flight data	|	15 minutes	|	2/25/2023	|	C
-12	|	Create an add flight page	|	Have a page that allows the user to add flights into the 'allflights' table within the database	|	2 hours	|	2/23/2023	|	C
-13	|	Draw an ER Diagram and write an explaination of the diagram	|	Have a clear ER Diagram that accurately represents the different attributes and values with a brief explanation	|	45 minutes	|	2/27/2023	|	B
-14	|	Create search system for specific flights	|	Allow the user to search for specific flights by flight number and date.	|	1 hour	|	2/28/2023	|	C
-15	|	Draw a wire frame and write an explanation of it	|	Have a clear wire frame that accurately represents and describes the application and have a brief explanation	|	1 hour	|	2/28/2023	|	B
-16	|	Create airport map page	|	Have a page that shows a map of the airport and the current date's flights at their gate	|	3 hours	|	3/1/2023	|	C
-17	|	Create flight history page	|	Have a page that shows all values stored within the database	|	1 hour	|	3/1/2023	|	C
-18	|	Complete finishing touches on all buttons in the application	|	Making sure that each button executes the expected task and is accurately displayed within the application	|	1 hour	|	3/1/2023	|	C
-19	|	Create table displaying the results of searched flights	|	Retrieving requested data from the database of all flights, and displaying them in an organized table 	|	1 hour	|	3/1/2023	|	C
-20	|	Follow up meeting with client	|	Showing the application to the client and to ask for their opinion on the applications current progress	|	10 minutes	|	3/1/2023	|	A
-21	|	Finish designing the map of the airport	|	When the program for the airport map is run, it show display a map of the airport with all the terminals and gates labeled 	|	2 hours	|	3/1/2023	|	C
-22	|	Connect database to the airport map and plot flights on the map	|	When the program for the airport map is run, all flights and their flight numbers for the days date will be plotted onto the map accordingly to their gate	|	1 hour	|	3/1/2023	|	C
-23	|	Create the program to calculate all flight statistics	|	All flight statistics will be outputted as percentages and grouped into three categories: on time, delayed, cancelled. 	|	30 minutes	|	3/1/2023	|	C
-24	|	Create flight statistics page	|	Have a page that allows the user to see statistics of flights, grouped by flight status	|	10 minutes	|	3/1/2023	|	C
-25	|	Write a program that allows the user to search for flights based off flight number or date	|	The user will be able to enter flight numbers or dates to search for flights. Requested information from the user will be displayed onto a table	|	1 hour 30 minutes	|	3/1/2023	|	C
-26	|	Create search flight page	|	Have a page that allows the user to search for flights.	|	10 minutes	|	3/1/2023	|	C
-27	|	Create UML Diagram and write a brief description 	|	Have a clear UML Diagram that accurately shows the different classes and methods used with a brief explanation	|	30 minutes	|	3/2/2023	|	B
-28	|	Write the test plans	|	Procedures one should take to test the program and the expected outcome of each test is recorded 	|	45 minutes	|	3/2/2023	|	B
+| Description | Test Type|  Input | Expected Output |
+|-----------|--------|-------|------------------|
+| Test for Registration System | Unit test | 1. Run unit3project.py file 2. Click the Register button on the application screen 3. Input the appropiate information in each textfield following the hint text 4. Click register | After clicking the register button, if the user already exists, a pop up message will appear letting the user know that the username already exists. If the password entered and the confirm password don't match, a red message will appear and notify the user that the passwords do not match. If all instructions were correctly followed it will take the user back to the Login screen.
+|  Test for Login System | Unit test | 1. Run  unit3.project.py file 2. Follow instructions and enter the appropiate information in each textfield following the hint text 3. Click Login 4 | After clicking login, if the account does not exist, a pop up message will appear letting the user know that the account was not found. If the account credentials do exist, it should take the user to the homepage. |
+|  Test for Logout System | Unit test | 1. Login 2. Press the logout button on the homepage  | When the logout button is pressed, it should direct the user back to the log in screen |
+|   Test for Add Flight System   | Unit test | 1. Login 2. Click Add Flight button 3. Enter the appropiate flight information in the textfields accordingly to the hint text. 4. Press add flight button | When the user enters flight information correctly, a pop up message should appear telling the user that the flight has been added. When a piece of information is incorrect within the textfield, error hint texts in red will appear to show the user that the information entered was incorrect.
+| Test for allflights database | Integration test | 1. Login 2. Click Add Flight button 3. Enter the appropiate flight information in the textfields accordingly to the hint text. 4. Press add flight button 5. Open unit3project.db and go to allflights table | When the flight is added, it should be stored into the database, and stored in the allflights table. Everytime the user adds a flight, it should update and appear in the allflights table.|
+
+|  Test for Flight History Screen | Unit test | 1. Login 2. Click Flight History button | When the Flight History button is clicked, it should direct the user to another page that displays a table of all past and recent flight information entered from the user. |
+| Test delete function for Flight History Screen | Unit test | 1. Login 2. Click Flight History button 3. Select a row 4. Click delete selected flight(s) button. | When the user clicks on the checkbox next to the flight, a checkmark should appear within the box. Then when they click the delete flight(s) button, the selected flight(s) should delete from the table |
+| Test for Search Flight Screen | Unit test | 1. Login 2. Click Search Flight button | When the Search Flight button is clicked, it should direct the user to another page that will allow the user to search for specific flight information. | 
+| Test for Search Flight System | Integration test | 1. Login 2. Click Search Flight button 3. Enter the appropiate information in the textfields accordingly to the hint text 4. Press the search flight button | When the user has entered appropiate flight information for the flight they are searching for, a table of just that single flight or multiple flights should appear. They can search for flights with just the flight number, date, or both. If the pieces of information entered is incorrect, an error hint text will appear letting the user know that the flight does not exist. The information being showed on the table should be retrieved from the database, and show the correct flight searched by the user. |
+| Test for Airport Flight Map Screen | Unit test  |1. Login 2. Click Airport Flight Map button | When the Airport Flight Map button is clicked, it should direct the user to another page that will allow the user to see the map, or return back home | 
+| Test for Airport Flight Map | Integration test | 1. Login 2. Click Airport Flight Map button 3. Click Show Map | When the show map button is pressed, a new window should open, showing the user a map of the whole airport, all terminals and gates. Further, it should display the flight numbers at their assigned gates for the current day. This data should be retrieved from the database, getting all flights for the current day, and accurately placing the flight numbers at the correct gate. |
+| Test for Flight Statistics Screen | Unit test | 1. Login 2. Click Flight Statistics button | When the Flight Statistics button is clicked, it should direct the user to another page that will shows all flight statistics. It should have three lines of data. The percentages for flights on time, delayed, and cancelled. | 
+| Code Review | Code Review | Reviewing if the code has adequate comments, function names, and variable names: 1. Open unit3project.py file. 2. Review the code and make changes or add comments where it is necessary | Revised version of the code that is easy to follow and understand | 
+
 
 # Criteria C
 ## Techniques Used
