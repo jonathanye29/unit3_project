@@ -50,15 +50,15 @@ As showing above in Fig. 2, the wireframe details how the application will look.
 
 ## UML Diagram
 ![project3UML](https://user-images.githubusercontent.com/111751273/222326940-44a828f3-8926-4e44-aee1-0fdad55b9664.jpeg)
-<i>Fig. 4</i> This is the UML Diagram showing all the classes and methods that were used in the development of the application.
+<i>Fig. 4</i> This is the UML Diagram showing all the classes and methods that were used in the development of the application. There are 2 main parent classes which are MDApp and MDScreen, that all methods and attributes from subclasses inherit, which can be shown by the arrows.
 
 ## Flow Diagrams
-
-Fig. 4
 
 Fig. 5
 
 Fig. 6
+
+Fig. 7
 ## Test Plan
 
 | Test Type | Target | Procedure | Expected Outcome |
