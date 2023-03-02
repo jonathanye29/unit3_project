@@ -5,7 +5,7 @@
 # Criteria A: Planning
 
 ## Problem definition
-The air traffic control manager Zaven Galoyan is facing a major challenge in effectively managing and tracking all the relevant data pertaining to airport operations, such as flight numbers, destination/arriving from, flight schedule, terminal and gate numbers. The current manual system for keeping track of this data is time-consuming, prone to mistakes, and ineffective. The data is easily mixed up and lost, and the urgent need is to create a simple centralized manual system that can assist the air traffic control crew in managing all of this information quickly and effectively without relying on automated inputs.
+My client, air traffic control manager Zaven Galoyan is facing a major challenge in effectively managing and tracking all the relevant data pertaining to airport operations, such as flight numbers, destination/arriving from, flight schedule, terminal and gate numbers. The current manual system for keeping track of this data is time-consuming, prone to mistakes, and ineffective. The data is easily mixed up and lost, and the urgent need is to create a simple centralized manual system that can assist the air traffic control crew in managing all of this information quickly and effectively without relying on automated inputs.
 
 ## Success Criteria
 1. The application will have a login and register system.
@@ -94,8 +94,303 @@ Fig. 7
 
 # Criteria C
 ## Techniques Used
+1. Object Oriented Programming (OOP)
+2. KivyMD Library
+3. Object Relational Mapping (ORM): SQLite
+4. For loops
+5. If statements
+6. Functions
+
+1. The application will have a login and register system.
+2. The application will allow the user to input all attributes (flight number, destination, flight schedule, terminal, and gate number) and will be stored into the database through the interface.
+3. The application will allow user to search for flights by date and flight number.
+4. The application will allow the user to view all values stored in the database.
+5. The application will have a page that accesses a map of the airport and the location of all flights at their gate.
+6. The application will have a statistics page that includes lists of all flights categorized by cancelled, delayed, and on-time. 
+
+## Development of User Interface Using KivyMD
+```.kv
+ScreenManager:
+
+    LoginScreen:
+        name: "LoginScreen"
+
+    SignupScreen:
+        name: "SignupScreen"
+
+    Homepage:
+        name: "Homepage"
+
+    AddFlight:
+        name: "AddFlight"
+
+    FlightHistory:
+        name: "FlightHistory"
+
+    SearchFlight:
+        name: "SearchFlight"
+
+    AirportMap:
+        name: "AirportMap"
+
+    FlightStatistics:
+        name: "FlightStatistics"
+```
+The client requires an application that allows them to record and store flight information. Developing a user interface is best fit for thier need as it is easier to use and visually appealing. Above is the KV code showing the ScreenManager, which defines the names and ids of each screen in the application.
+
+## Login System
+```.py
+# Class responsible for the Login MDScreen
+class LoginScreen(MDScreen):
+    def try_login(self):
+        if self.ids.uname.text == "":
+            self.ids.uname.error = True
+        if self.ids.passwd.text == "":
+            self.ids.passwd.error = True
+
+        # Check if username exists
+        uname = self.ids.uname.text
+        passwd = self.ids.passwd.text
+        query = f"SELECT * from users WHERE username ='{uname}'"
+        db = database_worker("unit3project.db")
+        result = db.search(query=query)
+        db.close()
+
+        # Check if password matches
+        if len(result) == 1:
+            id, email, hashed, uname = result[0]
+            if check_password(user_password=passwd, hashed_password=hashed):
+                self.parent.current = "Homepage"
+                self.ids.uname.text = ""
+                self.ids.passwd.text = ""
+            else:
+                print("Passwords don't match")
+
+        # If username does not exist, a pop up message will appear
+        if len(result) == 0:
+            dialog = MDDialog(title="User not found",
+                              text=f"Username '{self.ids.uname.text}' does not have an account.")
+            dialog.open()
+            self.ids.uname.text = ""
+            self.ids.passwd.text = ""
+```
+This is the program used for the login system. This program is used to meet the clients needs of having a loging system. The login in system has to verify if the username exists or doesn't, then check if the inputted password matches with the password stored in the databse. If the credentials entered are accurate and exist, the program will take the user to the homepage. However, if the username entered does not exist, a pop up message will appear showing that the account does not exist.
+
+## Login Screen
+```.kv
+<LoginScreen>:
+    size: 500, 500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .5, .9
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(50)
+        md_bg_color: "#F4F4F6"
+
+        MDLabel:
+            text: "Login"
+            font_style: "H2"
+            size_hint: 1, .4
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(120)
+
+            MDTextField:
+                id: uname
+                hint_text: "Please enter your username"
+                icon_left: "account"
+                helper_text_mode: "on_error"
+                helper_text: "Please enter username"
+
+            MDTextField:
+                id: passwd
+                hint_text: "Enter your password"
+                icon_left: "lock"
+                password: not show_pass.active
+                helper_text_mode: "on_error"
+                helper_text: "Please enter password"
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, None
+                height: dp(40)
+                MDCheckbox:
+                    id: show_pass
+                    size_hint_x: 0.1
+                    on_active: passwd.password = not self.active
+                    active: False
+                MDLabel:
+                    text: "Show password"
+                    font_size: 25
+                    size_hint_x: 0.7
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+
+            MDRaisedButton:
+                id: login
+                text: "Login"
+                on_press: root.try_login()
+                size_hint: .3, .4
+                md_bg_color: "#8dbcd6"
+
+            MDLabel:
+                size_hint: .3, 1
+
+            MDRaisedButton:
+                id: signup
+                text: "Register"
+                on_press: root.try_register()
+                size_hint: .3, .4
+                md_bg_color: "#8dbcd6"
+```
+This is the KV code for the Login Screen. This screens sole purpose is to allow the user to log into the application. This fits the clients desire for a secure application as the user has to input the accurate crendentials to access stored flight information. 
+
+## Register System
+```.py
+# Class responsible for the Signup MDScreen
+class SignupScreen(MDScreen):
+    def try_register(self):
+        uname = self.ids.uname.text
+        email = self.ids.email.text
+        passwd = self.ids.passwd.text
+        passwd_confirm = self.ids.passwd_confirm.text
+        checker = True
+        # Check if all fields are filled
+        if self.ids.uname.text == "":
+            self.ids.uname.error = True
+            checker = False
+        if self.ids.email.text == "":
+            self.ids.email.error = True
+            checker = False
+        if self.ids.passwd.text == "":
+            self.ids.passwd.error = True
+            checker = False
+        if passwd != passwd_confirm:
+            self.ids.passwd.error = True
+            self.ids.passwd_confirm.error = True
+            checker = False
+        # Check if username exists
+        db = database_worker("unit3project.db")
+        query = f"SELECT * from users WHERE username ='{uname}'"
+        result = db.search(query=query)
+        # If user exists, a pop up message will appear
+        if len(result) == 1:
+            dialog = MDDialog(title="User exists",
+                              text=f"The username you entered: {self.ids.uname.text} already exists.")
+            dialog.open()
+            self.ids.uname.text = ""
+            self.ids.email.text = ""
+            self.ids.passwd.text = ""
+            self.ids.passwd_confirm.text = ""
+
+        elif checker:
+            # Inserts the new user into the database and hashes their password
+            hash = encrypt_password(passwd)
+            query = f"INSERT into users(username, password, email) values('{uname}','{hash}','{email}')"
+            db.run_save(query)
+            db.close()
+            print("Registration completed")
+            self.parent.current = "LoginScreen"
+
+            self.ids.uname.text = ""
+            self.ids.email.text = ""
+            self.ids.passwd.text = ""
+            self.ids.passwd_confirm.text = ""
+```
+The code above details the register system requested by the client. The function above is used to check that inputted information is correct and unique for registration. After that, that information will be inputted in the database with an encrypted password.
+
+## Add Flight System
+```.py
+# Class responsible for the Add Flight MDScreen
+class AddFlight(MDScreen):
+    def add_flight(self):
+        checker = True
+        flight_number = self.ids.flight_number.text
+        destination = self.ids.destination.text
+        date = self.ids.date.text
+        flight_schedule = self.ids.flight_schedule.text
+        terminal = self.ids.terminal.text
+        gate_number = self.ids.gate_number.text
+        status = self.ids.status.text
+
+    # Flight number validation
+        if self.ids.flight_number.text == "":
+            self.ids.flight_number.error = True
+
+    # Destination validation
+        if self.ids.destination.text == "":
+            self.ids.destination.error = True
+
+    # Date validation
+        if self.ids.date.text == "":
+            self.ids.date.error = True
+
+    # Flight schedule validation
+        if self.ids.flight_schedule.text == "":
+            self.ids.flight_schedule.error = True
+            checker = False
+
+    # Terminal validation
+        if self.ids.terminal.text == "":
+            self.ids.terminal.error = True
+            checker = False
+
+    # Gate number validation
+        if self.ids.gate_number.text == "":
+            self.ids.gate_number.error = True
+            checker = False
 
 
+    # Status validation
+        if self.ids.status.text == "":
+            self.ids.status.error = True
+            checker = False
+
+        if checker:
+            db = database_worker("unit3project.db")
+            query = f"INSERT into allflights(flight_number, destination, date, flight_schedule, terminal, gate_number, status) values('{flight_number}', '{destination}', '{date}', '{flight_schedule}', '{terminal}', '{gate_number}', '{status}')"
+            db.run_save(query)
+            db.close()
+
+            # Pop up message
+            dialog = MDDialog(title="Flight added",
+                              text=f"Flight {self.ids.flight_number.text} has been successfully added.")
+            dialog.open()
+
+
+            self.ids.flight_number.text = ""
+            self.ids.destination.text = ""
+            self.ids.date.text = ""
+            self.ids.flight_schedule.text = ""
+            self.ids.terminal.text = ""
+            self.ids.gate_number.text = ""
+            self.ids.status.text = ""
+
+    # Validates if the date entered is real and in the correct format
+    input_format = "%m/%d/%Y"
+    def validate_date(self, text):
+        """
+        Validate the entered date
+        """
+        try:
+            datetime.strptime(text, self.input_format)
+            print("Valid date entered!")
+        except ValueError:
+            self.ids.date.error = True
+```
+The is the program used to add flights into the database. The client requested to have a system that allows the them to enter flight information and store them. To reduce the possibility of user-mistakes, I had validated the input information, so if the user does make a mistake, error messages will appear, allowing the user to correct the mistakes. The biggest challenge when creating validation for inputs was the date. After doing research, importing the datetime library was the best option as it makes it easier to choose a specific format of the date I would have liked to validate [12].
+
+## 
 
 # Criteria D: Functionality
 
@@ -112,6 +407,9 @@ Fig. 7
 9. Gomathy, Kavya. "5 Reasons to Use SQLite, the Tiny Giant for Your Next Project." Medium, The Startup, 4 Jan. 2022, https://medium.com/swlh/5-reasons-to-use-sqlite-the-tiny-giant-for-your-next-project-a6bc384b2df4. Accessed Feburary 10, 2023
 10. Yegulalp, Serdar. "Why You Should Use SQLite." InfoWorld, IDG Communications, Inc., 13 Feb. 2019, https://www.infoworld.com/article/3331923/why-you-should-use-sqlite.html. Accessed Feburary 10, 2023
 11. "SQLite Advantages and Disadvantages." javatpoint, n.d., https://www.javatpoint.com/sqlite-advantages-and-disadvantages. Accessed Feburary 10, 2023
+12. 
+13. ChatGPT. OpenAI, 2023, https://openai.com/.
+
 
 # Appendix
 
