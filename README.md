@@ -212,7 +212,7 @@ def search(self, query):  # Function for searching inside the db
     result = self.cursor.execute(query).fetchall()  # Run a query and fetch the result
     return result  # Return the found result
 ```
-The method shown above demonstrates how to retrieve the result of a query executed in the console. Its usage allows me to acquire query results across areas of development necessary for my solution and my client's needs.
+This is a method called search that takes a query parameter as input. The method executes the query using a cursor object and fetches all the results using the fetchall() method. The result is stored in the result variable and then returned to the user. This method can be used to search for records in a database table by executing a SQL query provided as the query parameter. Its usage allows me to acquire query results across areas of development throughout the application necessary for my solution and my client's needs. 
 
 ### Login System
 #### User Credential Verification
