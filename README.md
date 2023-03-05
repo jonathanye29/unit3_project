@@ -127,7 +127,7 @@ This is a method that is used to delete checked rows in a table. First, it gets 
 3. Object Relational Mapping (ORM): SQLite
 4. For loops
 5. If statements
-6. Matplotlib5
+6. Matplotlib
 
 ## Development of User Interface Using KivyMD
 
