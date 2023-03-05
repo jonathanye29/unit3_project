@@ -269,7 +269,28 @@ if self.ids.flight_number.text == "":
 ```
 This piece of code is used for validating the user input in the add flights page. It ensures that the user has typed something into the textfield, and if not, it raises and error. This is an important aspect of the application to my client as there can not be missing values for flight information. By using this method of validation, I reduce the risk for mistakes and missing pieces of information. I use this throughout the application where there are textfields that are required to be filled out.
 
-#### Date Validation
+#### Time Picker
+```.py
+def show_time_picker(self):
+    from datetime import datetime
+
+    # Define default time
+    default_time = datetime.strptime("12:00", '%H:%M').time()
+
+    time_dialog = MDTimePicker(
+        primary_color="#8dbcd6",
+        accent_color = "#f4f4f4",
+        text_button_color = "#f4f4f4",
+    )
+    # Set default Time
+    time_dialog.set_time(default_time)
+    time_dialog.bind(on_cancel=self.on_cancel, time=self.get_time, on_save=self.on_save_time)
+    time_dialog.open()
+```
+MDTimePicker is a time picker widget in the KivyMD library that allows users to easily select a time. The code snippet above shows how I integrated MDTimePicker into my application to allow users to input time. By using MDTimePicker, users can easily select the time they want in a format that is easy to understand. This reduces the possibility of user mistakes and increases efficiency. As you can see in the code, the "open_picker" method opens the time picker, and the "on_save" method saves the time selected in the correct format "hh:mm". Overall, the integration of MDTimePicker has made the time input process much easier and more efficient for the user.
+
+
+#### Date Picker
 ```.py
 # Date calendar picker
     def date(self):
@@ -282,7 +303,7 @@ This piece of code is used for validating the user input in the add flights page
         value = value.strftime("%m/%d/%Y")
         self.ids.date.text = f"{value}"
 ```
-This piece of code is another form of validation I used, specifically for date. The application is sensitive to the date inputted, as it needs to be in the exact format it is asking for. This is because later on the database will match the date inputted to the date stored to retrieve stored information. This was a challenge as I had to validate the date in a specific format. After doing research, using the date picker from KivyMD library was the best option, as it makes it easier to choose a specific format of the date I want to validate [2]. As you can see in the code, the "date" method opens the calander, and the "on_save" method saves the date selected in the correct format "mm/dd/yyy".
+The piece of code above shows how I allowed the user to input date. The application is sensitive to the date inputted, as it needs to be in the exact format it is asking for. This is because later on the database will match the date inputted to the date stored to retrieve stored information. This was a challenge as I needed the date in a specific format. However, after doing some research, I found that using the date picker from KivyMD library was the best option, as it makes it easier to choose a specific format of the date I wanted [2]. As you can see in the code, the "date" method opens the calander, and the "on_save" method saves the date selected in the correct format "mm/dd/yyy". I also use this method in the search system of the application to increase efficieny and reduce the possibilities of user mistakes.
 
 #### Checkboxes
 ```.py
