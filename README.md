@@ -117,7 +117,8 @@ This is a method that is used to delete checked rows in a table. First, it gets 
 26	|	Create search flight page	|	Have a page that allows the user to search for flights.	|	10 minutes	|	3/1/2023	|	C
 27	|	Create UML Diagram and write a brief description 	|	Have a clear UML Diagram that accurately shows the different classes and methods used with a brief explanation	|	30 minutes	|	3/2/2023	|	B
 28	|	Write the test plans	|	Procedures one should take to test the program and the expected outcome of each test is recorded 	|	45 minutes	|	3/2/2023	|	B
-29	|	Finish Criteria C	|	Write the descriptions of the code and the detail of the techniques that were used 	|	1 hour 45 minutes	|	3/2/2023	|	C
+29  | Create flow diagrams and write brief explanations for each| Have accurate flow diagrams for different parts of the porgram with brief explanations | 1 hour | 3/5/2023 | B
+30	|	Finish Criteria C	|	Write the descriptions of the code and the detail of the techniques that were used 	|	2 hours	|	3/5/2023	|	C
 
 # Criteria C: Development
 ## Techniques Used
@@ -441,8 +442,12 @@ The program above details how I was able to calculate the statistics for all fli
 #### Client approval of proposed success critereas
 <img width="888" alt="Screen Shot 2023-03-01 at 12 03 11 PM" src="https://user-images.githubusercontent.com/111751273/222034489-3c8880e5-e7d3-47bd-8aab-dc20a27f228b.png">
 
-#### Client's satisfaction of the application during development process
+#### Client's review of application during development process
 <img width="1173" alt="Screen Shot 2023-03-01 at 12 12 44 PM" src="https://user-images.githubusercontent.com/111751273/222035637-e178d390-664c-4789-93bd-48b542e8c634.png">
+
+#### Client's review of final product
+<img width="1165" alt="Screen Shot 2023-03-05 at 10 34 02 PM" src="https://user-images.githubusercontent.com/111751273/222963697-2049e75d-386d-4b28-b9ff-bf0c1a78d266.png">
+
 
 
 ## Python Code
