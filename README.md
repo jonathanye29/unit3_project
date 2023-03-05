@@ -203,6 +203,9 @@ MDTextField:
 ```
 This is an example of an MDTextField I used for my client's application. MDTextFields are text fields on the applications page that allows the user to input information through their keyboard. This is an important aspect to the user interface for my client's application as it will allow them to input information they want into the program. When I was programming the MDTextFields, I realized that there is a high chance for the user to make mistakes when typing information into the MDTextField. As shown above, I have helper text, so when the user forgets to input a piece of information, an error will appear in red helper text to guide the user.
 
+### MDCheckbox
+
+
 ## Development of Application Using Python
 
 ### Database Handler
@@ -227,7 +230,7 @@ if len(result) == 1:
     else:
         print("Passwords don't match")
 ```
-This is the program used for the login system. The login system has to verify if the username exists or doesn't, then check if the inputted password matches with the password stored in the databse. This meets the first criteria of having a login system. I was able to apply this method to other parts of the code such as the register and search flight system to check if data inputted exists or not.
+This is the program used for the login system. As shown in the code above, this program works by checking if anything with a length of one or greater is returned. Then after that, the code verifies if the inputted password matches with the password stored in the database under the username entered. This meets the first criteria of having a login system. I was able to apply this method to other parts of the code such as the register and search flight system to check if data inputted exists or not.
 
 #### Pop Up Message
 ```.py
@@ -255,19 +258,30 @@ This piece of code is used for validating the user input in the add flights page
 
 #### Date Validation
 ```.py
-# Validates if the date entered is real and in the correct format
-input_format = "%m/%d/%Y"
-def validate_date(self, text):
-    """
-    Validate the entered date
-    """
-    try:
-        datetime.strptime(text, self.input_format)
-        print("Valid date entered!")
-    except ValueError:
-        self.ids.date.error = True
+# Date calendar picker
+    def date(self):
+        date_dialog = MDDatePicker()
+        date_dialog.bind(on_save=self.on_save)
+        date_dialog.open()
+
+    def on_save(self, instance, value, date_range):
+        self.selected_date = value
+        value = value.strftime("%m/%d/%Y")
+        self.ids.date.text = f"{value}"
 ```
-This piece of code is another form of validation I used, specifically for date. The application is sensitive to the date inputted, as it needs to be in the exact format it is asking for. This is because later on the database will match the date inputted to the date stored to retrieve stored information. This was a challenge as I had to validate the date in a specific format. After doing research, importing the datetime library was the best option as it makes it easier to choose a specific format of the date I would have liked to validate [12].
+This piece of code is another form of validation I used, specifically for date. The application is sensitive to the date inputted, as it needs to be in the exact format it is asking for. This is because later on the database will match the date inputted to the date stored to retrieve stored information. This was a challenge as I had to validate the date in a specific format. After doing research, using the date picker from KivyMD library was the best option, as it makes it easier to choose a specific format of the date I want to validate [2]. As you can see in the code, the "date" method opens the calander, and the "on_save" method saves the date selected in the correct format "mm/dd/yyy".
+
+#### Checkboxes
+```.py
+def checkbox_click(self, checkbox, value, terminal):
+    if value:  # if the check is true
+        self.selected_location = terminal
+        print(terminal)
+        self.ids.terminal.text = f"{terminal}"
+```
+
+To decrease the possibility of human errors, I decided to use checkboxes to select certain values such as the terminal. Instead of having the user have to type in which terminal the flight is in, they can just select the right one using a checkbox. The method shown in the code above handles the click event of a checkbox. The method takes three arguments, checkbox, value, and terminal. If the value of the checkbox is true (meaning it has been checked), the method sets the value of the selected_location attribute to the terminal value. It then sets the text of the terminal to the selected terminal, and when the user adds the flight, the selected terminal is inputted into the database.
+
 
 #### Insert Query
 ```.py
@@ -276,7 +290,10 @@ query = f"INSERT into allflights(flight_number, destination, date, flight_schedu
 db.run_save(query)
 db.close()
 ```
-The is the program used to add flights into the database. My client requested to have a system that allows the them to enter flight information and store them. In order to do this, I used executed a query in the program that inserts flight information into a table inside the database (allflights table). This system fulfills the second criteria, by having the application allow the user to input all attributes (flight number, destination, flight schedule, terminal, and gate number) and store them into the database. I also used this insert query method in other parts of the program such as the register system.
+The is the program used to add flights into the database. My client requested to have a system that allows the them to enter flight information and store them. In order to do this, I used executed a query in the program that inserts flight information into a table inside the database (allflights table).
+
+This code inserts data into a database table called "allflights" using the information provided by the variables flight_number, destination, date, flight_schedule, terminal, gate_number, and status. The database connection is created using the database_worker function and the unit3project.db database file. The SQL query is constructed using the query variable by inserting the values from the variables. Then, the run_save method is used to execute the SQL query and save the changes to the database. Finally, the database connection is closed using the close method.This system fulfills the second criteria, by having the application allow the user to input all attributes (flight number, destination, flight schedule, terminal, and gate number) and store them into the database. I also used this insert query method in other parts of the program such as the register system.
+
 
 ### Flight History System
 #### Data Table
