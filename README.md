@@ -8,7 +8,7 @@
 My client, air traffic control manager Zaven Galoyan is facing a major challenge in effectively managing and tracking all the relevant data pertaining to airport operations, such as flight numbers, destination/arriving from, flight schedule, terminal and gate numbers. The current manual system for keeping track of this data is time-consuming, prone to mistakes, and ineffective. The data is easily mixed up and lost, and the urgent need is to create a simple centralized manual system that can assist the air traffic control crew in managing all of this information quickly and effectively without relying on automated inputs.
 
 ## Success Criteria
-1. The application will have a login and register system.
+1. The application will have a login and registration system.
 2. The application will allow the user to input all attributes (flight number, destination, flight schedule, terminal, and gate number) and will be stored into the database through the interface.
 3. The application will allow user to search for flights by date and flight number.
 4. The application will allow the user to view all values stored in the database.
@@ -268,9 +268,25 @@ if len(result) == 0:
 
 When programming the login system, I came across the challenge of how I was going to show two different error messages, due to the fact that helper texts can only be used once for each MDTextField. I was able solve this by discovering MDDialog (pop up message) on the KivyMD website[2]. As shown in the code above, I display pop up message when a username entered does not exist. This increases both the professionality and quality of the application for my client. I was able to use this method in other parts of the application such as the register, add flight, and search flight systems.
 
+### Registration System
+
+#### Password Policy
+```.py
+pattern = r'^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+]).{8,}$'
+# Check if the password matches the pattern
+if not re.match(pattern, passwd):
+    self.ids.passwd.error = True
+    return
+```
+This is the password policy I use to increase the security of the application. It requires the user to input a password that is at least 8 characters long, contains at least 1 digit, 1 lowercase letter, and 1 special character. This fits my client's need for increased protection of the stored data, as passwords that meet these criteria have a lower likelihood of being guessed or cracked.
+
+To implement this policy, I used the "re" module from the Python standard library, which provides support for regular expressions. Regular expressions are a powerful tool for text processing and pattern matching, and in this case, I used them to define a pattern that checks for the required password criteria. The pattern I used is: r'^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+]).{8,}$'
+
+This pattern consists of several parts, including positive lookahead assertions that check for the presence of at least one digit, one lowercase letter, and one special character, and a minimum length of 8 characters. I then used the "re.match()" function to check if a given password matches this pattern. If the password does not meet the criteria, the user is prompted to input a stronger password. This policy helps to increase the security of the application and protect the sensitive data stored within it.
+
+
 
 ### Add Flight System
-
 #### Missing Value Validation
 ```.py
 # Flight number validation
@@ -326,7 +342,7 @@ def checkbox_click(self, checkbox, value, terminal):
         self.ids.terminal.text = f"{terminal}"
 ```
 
-To decrease the possibility of human errors, I decided to use checkboxes to select certain values such as the terminal. Instead of having the user have to type in which terminal the flight is in, they can just select the right one using a checkbox. The method shown in the code above handles the click event of a checkbox. The method takes three arguments, checkbox, value, and terminal. If the value of the checkbox is true (meaning it has been checked), the method sets the value of the selected_location attribute to the terminal value. It then sets the text of the terminal to the selected terminal, and when the user adds the flight, the selected terminal is inputted into the database. I use this more than once, for other values such as gate numbers and the statuses of flights.
+To decrease the possibility of human errors, I decided to use checkboxes to select certain values such as the terminal. Instead of having the user have to type in which terminal the flight is in, they can just select the right one using a checkbox. The method shown in the code above handles the click event of a checkbox. The method takes three arguments, checkbox, value, and terminal. If the value of the checkbox is true (meaning it has been checked), the method sets the value of the selected_location attribute to the terminal value. It then sets the text of the terminal to the selected terminal, and when the user adds the flight, the selected terminal is inputted into the database. I use this more than once, for other values such as gate numbers and the statuses of flights, and in other parts of the application such as the login and registration system.
 
 
 #### Insert Query
