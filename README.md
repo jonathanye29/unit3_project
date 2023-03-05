@@ -440,15 +440,15 @@ The program above details how I was able to calculate the statistics for all fli
 
 # Appendix
 
-### Evidence of Consultation
+## Evidence of Consultation
 
-#### Client approval of proposed success critereas
+### Client approval of proposed success critereas
 <img width="888" alt="Screen Shot 2023-03-01 at 12 03 11 PM" src="https://user-images.githubusercontent.com/111751273/222034489-3c8880e5-e7d3-47bd-8aab-dc20a27f228b.png">
 
-#### Client's review of application during development process
+### Client's review of application during development process
 <img width="1173" alt="Screen Shot 2023-03-01 at 12 12 44 PM" src="https://user-images.githubusercontent.com/111751273/222035637-e178d390-664c-4789-93bd-48b542e8c634.png">
 
-#### Client's review of final product
+### Client's review of final product
 <img width="1165" alt="Screen Shot 2023-03-05 at 10 34 02 PM" src="https://user-images.githubusercontent.com/111751273/222963697-2049e75d-386d-4b28-b9ff-bf0c1a78d266.png">
 
 
