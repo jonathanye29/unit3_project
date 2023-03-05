@@ -53,12 +53,15 @@ As showing above in Fig. 2, the wireframe details how the application will look.
 <i>Fig. 4</i> This is the UML Diagram showing all the classes and methods that were used in the development of the application. There are 2 main parent classes which are MDApp and MDScreen, that all methods and attributes from subclasses inherit, which can be shown by the arrows.
 
 ## Flow Diagrams
-![Flowchart](https://user-images.githubusercontent.com/111751273/222958520-926fb9e8-46f6-4ec3-aa96-31f0948df553.jpeg)
+![project3flowchart1](https://user-images.githubusercontent.com/111751273/222959574-c2700376-0e36-4e39-9bf6-49b6e391d8d6.jpeg)
 <i>Fig. 5</i> This is the flow diagram that details the process of how the search method works. 
 
 This method is used to search for flight information in a database. It creates a table using the MDDataTable class and specifies the columns of the table. It then connects to a SQLite database using a database_worker class and runs a SQL query to search for flight information based on the flight number or date provided by the user. If data is found, it updates the table with the search results and displays it on the screen. If no data is found, it displays an error message using a pop-up dialog.
 
-Fig. 6
+![project3flowchart2 jpg](https://user-images.githubusercontent.com/111751273/222961252-2696019e-96c7-40d0-826f-06838853b379.jpeg)
+<i>Fig. 6</i> This is the flow diagram that details the process of how the add flight method works. 
+
+This method is used to add flight information to a database. It first validates the input fields to ensure that they are not empty. If all the fields are valid, it connects to a SQLite database using the database_worker class and runs an SQL query to insert the flight information into the database. It then displays a pop-up message indicating that the flight has been successfully added to the database. Finally, it clears the input fields so that the user can add another flight.
 
 Fig. 7
 ## Test Plan
