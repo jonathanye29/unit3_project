@@ -53,8 +53,10 @@ As showing above in Fig. 2, the wireframe details how the application will look.
 <i>Fig. 4</i> This is the UML Diagram showing all the classes and methods that were used in the development of the application. There are 2 main parent classes which are MDApp and MDScreen, that all methods and attributes from subclasses inherit, which can be shown by the arrows.
 
 ## Flow Diagrams
+![project3flowchart1 jpg](https://user-images.githubusercontent.com/111751273/222949772-71bf4727-b3ff-449c-9b43-d0ca632a83b3.jpeg)
+<i>Fig. 5</i> This is the flow diagram that details the process of how the search method works. 
 
-Fig. 5
+This method is used to search for flight information in a database. It creates a table using the MDDataTable class and specifies the columns of the table. It then connects to a SQLite database using a database_worker class and runs a SQL query to search for flight information based on the flight number or date provided by the user. If data is found, it updates the table with the search results and displays it on the screen. If no data is found, it displays an error message using a pop-up dialog.
 
 Fig. 6
 
