@@ -204,6 +204,17 @@ MDTextField:
 This is an example of an MDTextField I used for my client's application. MDTextFields are text fields on the applications page that allows the user to input information through their keyboard. This is an important aspect to the user interface for my client's application as it will allow them to input information they want into the program. When I was programming the MDTextFields, I realized that there is a high chance for the user to make mistakes when typing information into the MDTextField. As shown above, I have helper text, so when the user forgets to input a piece of information, an error will appear in red helper text to guide the user.
 
 ### MDCheckbox
+```.py
+MDCheckbox:
+    id: terminal1
+    group: 'terminals' #this group is so that all the checkboxes are linked and only one can be selected
+    size_hint: None, None
+    size: dp(48), dp(48)
+    active: True
+    on_active: root.checkbox_click(self, self.active, "T1")
+    pos_hint: {"center_y":.5}
+```
+This is an example of how I used MDCheckbox for the selection of certain values. 
 
 
 ## Development of Application Using Python
@@ -280,7 +291,7 @@ def checkbox_click(self, checkbox, value, terminal):
         self.ids.terminal.text = f"{terminal}"
 ```
 
-To decrease the possibility of human errors, I decided to use checkboxes to select certain values such as the terminal. Instead of having the user have to type in which terminal the flight is in, they can just select the right one using a checkbox. The method shown in the code above handles the click event of a checkbox. The method takes three arguments, checkbox, value, and terminal. If the value of the checkbox is true (meaning it has been checked), the method sets the value of the selected_location attribute to the terminal value. It then sets the text of the terminal to the selected terminal, and when the user adds the flight, the selected terminal is inputted into the database.
+To decrease the possibility of human errors, I decided to use checkboxes to select certain values such as the terminal. Instead of having the user have to type in which terminal the flight is in, they can just select the right one using a checkbox. The method shown in the code above handles the click event of a checkbox. The method takes three arguments, checkbox, value, and terminal. If the value of the checkbox is true (meaning it has been checked), the method sets the value of the selected_location attribute to the terminal value. It then sets the text of the terminal to the selected terminal, and when the user adds the flight, the selected terminal is inputted into the database. I use this more than once, for other values such as gate numbers and the statuses of flights.
 
 
 #### Insert Query
@@ -322,7 +333,11 @@ print(query)
 data = db.search(query)
 db.close()
 ```
-The program above details how the application will access the database and search for the flight the user is looking for. I executed a query in the program that selects specific data from a specifc table within the database. I use this select query method in other parts of the program such as the login system. The program takes the username inputted by the user to try and select a match within the users table to see if the user exists. This fulfills the third criteria by allowing the user to search for flights by date and flight number to locate specific flights. Further, I use this select query method in other parts of the program such as the login, airport map, and flight statistics system. 
+The program above details how the application will access the database and search for the flight the user is looking for. I executed a query in the program that selects specific data from a specifc table within the database.
+
+This code queries a database table called allflights using the database_worker function and the unit3project.db database file. The SQL query is constructed using the f-string formatting and searches for all the rows in the table where the flight_number is equal to the text entered in an element with an id of flight_number or the date is equal to the text entered in an element with an id of date. The search method of the database_worker class is used to execute the SQL query and retrieve the matching data from the database. The retrieved data is stored in the data variable.
+
+I use this select query method in other parts of the program such as the login system. The program takes the username inputted by the user to try and select a match within the users table to see if the user exists. This fulfills the third criteria by allowing the user to search for flights by date and flight number to locate specific flights. Further, I use this select query method in other parts of the program such as the login, airport map, and flight statistics system. 
 
 ### Airport Flight Map System
 #### Plotting Airport Map
