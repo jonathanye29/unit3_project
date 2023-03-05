@@ -176,7 +176,7 @@ The client requires an application that allows them to record and store flight i
         padding: dp(50)
         md_bg_color: "#F4F4F6"
 ```
-This is the general basic set up of each screen in the application. Since my client wanted a professional and clean aesthetic look, I decided it is best of all screens in the application had the same set up and background image.
+This is a Kivy language code block defining the visual layout of a screen named "LoginScreen". This is an example of one of many screens in the application. MDCard is a component in the KivyMD library that represents a rectangular card with rounded corners, which can contain other widgets inside it. I use this as the general basic set up of each screen in the application, so all screens had the same set up and background image, as my client wanted a professional and clean aesthetic look.
 
 ### MDFillRoundFlatIconButton
 ```.kv
@@ -223,7 +223,7 @@ MDCheckbox:
     on_active: root.checkbox_click(self, self.active, "T1")
     pos_hint: {"center_y":.5}
 ```
-This is an example of how I used MDCheckbox for the selection of certain values. 
+This is a KivyMD widget that creates a checkbox. This is an example of how I used MDCheckbox for the selection of certain values. The checkbox has an ID of "terminal1", which can be used to reference the widget in the Python code. The "group" property is set to "terminals", which means that this checkbox is part of a group of checkboxes with the same group name. Only one checkbox in the group can be selected at a time. I use this for other parts of the application such as for selecting the gate number and flight status.
 
 
 ## Development of Application Using Python
