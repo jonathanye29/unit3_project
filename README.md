@@ -271,6 +271,7 @@ This piece of code is used for validating the user input in the add flights page
 
 #### Time Picker
 ```.py
+# Time picker
 def show_time_picker(self):
     from datetime import datetime
 
@@ -307,6 +308,7 @@ The piece of code above shows how I allowed the user to input date. The applicat
 
 #### Checkboxes
 ```.py
+# Checkboxes
 def checkbox_click(self, checkbox, value, terminal):
     if value:  # if the check is true
         self.selected_location = terminal
