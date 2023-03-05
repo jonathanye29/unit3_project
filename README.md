@@ -13,7 +13,7 @@ My client, air traffic control manager Zaven Galoyan is facing a major challenge
 3. The application will allow user to search for flights by date and flight number.
 4. The application will allow the user to view all values stored in the database.
 5. The application will have a page that accesses a map of the airport and the location of all flights at their gate.
-6. The application will have a statistics page that includes lists of all flights categorized by cancelled, delayed, and on-time. 
+6. The application will have a statistics page that includes percentages of all flights categorized by cancelled, delayed, and on-time. 
 
 ## Design Statement 
 I plan to develop a system for the air traffic crew using Python, Kivymd, and SQlite. This will provide a comprehensive solution to the challenges faced by the air traffic control in maintaining accurate and up-to-date records of flight information. This solution will provide the air traffic control with a reliable and user-friendly tool to manage and track all flight-related information easily, ensuring that airport operations run smoothly and effectively.
