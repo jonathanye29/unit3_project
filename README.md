@@ -118,7 +118,7 @@ Fig. 7
 3. Object Relational Mapping (ORM): SQLite
 4. For loops
 5. If statements
-6. Methods
+6. Matplotlib5
 
 ## Development of User Interface Using KivyMD
 
