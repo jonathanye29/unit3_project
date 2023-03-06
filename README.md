@@ -98,18 +98,18 @@ This is a method that is used to delete checked rows in a table. First, it gets 
 5	|	Brainstorm and write down a design statement for the client        	|	A clear design statement that suits the need of the client	|	15 minutes	|	2/10/2023	|	A
 6	|	Write the rationale for proposed solution 	|	A clear justification that suits the client and developer.	|	30 minutes	|	2/10/2023	|	A
 7	|	Create system diagram        	|	To have a clear idea of the hardware and software requirements for the proposed solution	|	45 minutes	|	2/10/2023	|	B
-8	|	Follow up meeting with client	|	Present success criteria to client to get the approval	|	20 minutes	|	2/13/2023	|	A
-9	|	Create a login and registration system	|	To create a program that allows the user to register and login to the application using a username and password they set up	|	1 hour	|	2/13/2023	|	C
-10	|	Create password encryption	|	Using 'sha256' to encrypt password and check password in login and registration	|	45 minutes	|	2/13/2023	|	C
-11	|	Create a password policy	|	Have a policy where when the user creates an account, their password must follow certain requirements such as having a minimum of 8 characters	|	15 minutes	|	2/25/2023	|	C
-12	|	Create table for all flights	|	To have a table inside the database that includes all flight data	|	15 minutes	|	2/25/2023	|	C
-13	|	Create an add flight page	|	Have a page that allows the user to add flights into the 'allflights' table within the database	|	15 minutes	|	2/23/2023	|	C
-14	|	Program the add flight system	|	Have a fully functional program that allows the user to enter all flight information and save it. The data entered should be stored into the database and shown in the table with all flight information	|	2 hours	|	2/27/2023	|	C
-15	|	Add time picker to add flight system	|	Implement the time picker from KivyMD library into the add flight system. Program should display a clock that allows the user to select time.	|	45 minutes	|	2/27/2023	|	C
-16	|	Add date picker to add flight system	|	Implement the date picker from KivyMD library into the add flight system. Program should display a calendar for the user to select the date.	|	45 minutes	|	2/27/2023	|	C
-17	|	Add checkboxes to add flight system	|	Implement the usage of checkboxes for value selection. Have checkboxes for different pieces of flight information for the user to select from.	|	1 hour	|	2/27/2023	|	C
-18	|	Create search system for specific flights	|	Allow the user to search for specific flights by flight number and date.	|	1 hour	|	2/28/2023	|	C
-19	|	Draw a wire frame and write an explanation of it	|	Have a clear wire frame that accurately represents and describes the application and have a brief explanation	|	1 hour	|	2/28/2023	|	B
+8	|	Draw a wire frame and write an explanation of it	|	Have a clear wire frame that accurately represents and describes the application and have a brief explanation	|	1 hour	|	2/10/2023	|	B
+9	|	Follow up meeting with client	|	Present success criteria to client to get the approval	|	20 minutes	|	2/13/2023	|	A
+10	|	Create a login and registration system	|	To create a program that allows the user to register and login to the application using a username and password they set up	|	1 hour	|	2/13/2023	|	C
+11	|	Create password encryption	|	Using 'sha256' to encrypt password and check password in login and registration	|	45 minutes	|	2/13/2023	|	C
+12	|	Create a password policy	|	Have a policy where when the user creates an account, their password must follow certain requirements such as having a minimum of 8 characters	|	15 minutes	|	2/25/2023	|	C
+13	|	Create table for all flights	|	To have a table inside the database that includes all flight data	|	15 minutes	|	2/25/2023	|	C
+14	|	Create an add flight page	|	Have a page that allows the user to add flights into the 'allflights' table within the database	|	15 minutes	|	2/23/2023	|	C
+15	|	Program the add flight system	|	Have a fully functional program that allows the user to enter all flight information and save it. The data entered should be stored into the database and shown in the table with all flight information	|	2 hours	|	2/27/2023	|	C
+16	|	Add time picker to add flight system	|	Implement the time picker from KivyMD library into the add flight system. Program should display a clock that allows the user to select time.	|	45 minutes	|	2/27/2023	|	C
+17	|	Add date picker to add flight system	|	Implement the date picker from KivyMD library into the add flight system. Program should display a calendar for the user to select the date.	|	45 minutes	|	2/27/2023	|	C
+18	|	Add checkboxes to add flight system	|	Implement the usage of checkboxes for value selection. Have checkboxes for different pieces of flight information for the user to select from.	|	1 hour	|	2/27/2023	|	C
+19	|	Create search system for specific flights	|	Allow the user to search for specific flights by flight number and date.	|	1 hour	|	2/28/2023	|	C
 20	|	Create airport map page	|	Have a page that shows a map of the airport and the current date's flights at their gate	|	2 hours	|	3/1/2023	|	C
 21	|	Create flight history page	|	Have a page that shows all values stored within the database	|	1 hour	|	3/1/2023	|	C
 22	|	Validate all buttons and their actions	|	Making sure that each button executes the expected task and is accurately displayed within the application	|	1 hour	|	3/1/2023	|	C
@@ -125,7 +125,7 @@ This is a method that is used to delete checked rows in a table. First, it gets 
 32	|	Write the test plans	|	Procedures one should take to test the program and the expected outcome of each test is recorded 	|	45 minutes	|	3/2/2023	|	B
 33	|	Create flow diagrams and write brief explanations for each       	|	Have accurate flow diagrams for different parts of the porgram with brief explanations	|	1 hour	|	3/5/2023	|	B
 34	|	Present final product to client	|	Meet with client to deliver the final product of the application	|	20 minutes	|	3/5/2023	|	A
-35	|	Finish Criteria C	|	Write the descriptions of the code and the detail of the techniques that were used `	|	2 hours	|	3/5/2023	|	C
+35	|	Finish Criteria C	|	Write the descriptions of the code and the detail of the techniques that were used `	|	2 hours	|	3/6/2023	|	C
 
 # Criteria C: Development
 ## Techniques Used
