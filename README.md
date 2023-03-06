@@ -134,36 +134,20 @@ This is a method that is used to delete checked rows in a table. First, it gets 
 
 ## Development of User Interface Using KivyMD
 
-### User Interface Screen Definition
+### Screen Manager
 ```.kv
 ScreenManager:
 
     LoginScreen:
         name: "LoginScreen"
-
-    SignupScreen:
-        name: "SignupScreen"
-
-    Homepage:
-        name: "Homepage"
-
-    AddFlight:
-        name: "AddFlight"
-
-    FlightHistory:
-        name: "FlightHistory"
-
-    SearchFlight:
-        name: "SearchFlight"
-
-    AirportMap:
-        name: "AirportMap"
-
-    FlightStatistics:
-        name: "FlightStatistics"
 ```
-The client requires an application that allows them to record and store flight information. Developing a user interface is best fit for thier need as it is easier to use and visually appealing. Above is the KV code showing the ScreenManager, which defines the names and ids of each screen in the application.
+The client requires an application that allows them to record and store flight information. Developing a user interface is best fit for thier need as it is easier to use and visually appealing.
 
+The KV code snippet above shows a ScreenManager with a single screen called "LoginScreen". To create additional screens for the flight information application, I followed a similar structure by defining each screen with a unique name and id within the ScreenManager. For example, I created a signup screen with a name of "SignpScreen". I repeated this process for each screen in the application, such as the "homepage", "add flight screen", "flight history screen", "search flight screen", "airport map screen", and "flight statistics screen".
+
+Each screen is defined using a separate KV code block that specifies the layout and widgets for that screen. For example, the "add flight screen" might include text input fields for the user to enter flight information, while the "flight history screen" might display a list of previously recorded flights.
+
+By using a ScreenManager and defining each screen as a separate widget, I can easily switch between screens and manage the application flow. For example, when the user logs in or signs up, I can switch from the "LoginScreen" or "SignupScreen" to the "Homepage". Similarly, I can navigate from the "HomePageScreen" to the "AddFlightScreen" when the user wants to record a new flight, or to the "FlightHistoryScreen" to view past flights. This approach allows for a more organized and user-friendly interface, and can help improve the overall user experience.
 ### General Application Screen
 ```.kv
 <LoginScreen>:
@@ -278,13 +262,15 @@ if not re.match(pattern, passwd):
     self.ids.passwd.error = True
     return
 ```
-This is the password policy I use to increase the security of the application. It requires the user to input a password that is at least 8 characters long, contains at least 1 digit, 1 lowercase letter, and 1 special character. This fits my client's need for increased protection of the stored data, as passwords that meet these criteria have a lower likelihood of being guessed or cracked.
+
+
+This is the password policy I use to increase the security of the application. It requires the user to input a password that is at least 8 characters long, contains at least 1 digit, 1 lowercase letter, and 1 special character. This fits my client's need for increased protection of the stored data, as passwords that meet these criteria have a lower likelihood of being guessed or cracked. 
+
+I found it challenging at first trying to figure out how to create a secure password policy for my application. I knew that I needed to require users to create strong passwords, but I wasn't sure what criteria to use or how to implement them. I also wanted to make sure that my policy was up-to-date and followed best practices for password security. After doing some research online, I came across Stack Overflow, which is a great resource for developers and students like myself. I found a post on Stack Overflow that explained how to use regular expressions to validate password strength, and it provided some example code that I could use as a starting point for my own implementation [15].
 
 To implement this policy, I used the "re" module from the Python standard library, which provides support for regular expressions. Regular expressions are a powerful tool for text processing and pattern matching, and in this case, I used them to define a pattern that checks for the required password criteria. The pattern I used is: r'^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+]).{8,}$'
 
 This pattern consists of several parts, including positive lookahead assertions that check for the presence of at least one digit, one lowercase letter, and one special character, and a minimum length of 8 characters. I then used the "re.match()" function to check if a given password matches this pattern. If the password does not meet the criteria, the user is prompted to input a stronger password. This policy helps to increase the security of the application and protect the sensitive data stored within it.
-
-
 
 ### Add Flight System
 #### Missing Value Validation
@@ -452,6 +438,7 @@ The program above details how I was able to calculate the statistics for all fli
 12. Python Software Foundation. “datetime — Basic Date and Time Types.” Python 3 Documentation, 2021, https://docs.python.org/3/library/datetime.html. Accessed March 2, 2023
 13. "Matplotlib." Matplotlib, https://matplotlib.org/., Accessed March 2, 2023
 14. ChatGPT. OpenAI, 2023, https://openai.com/. Accessed March 2, 2023
+15. Stack Overflow. "Validation of a Password - Python." Stack Overflow, 14 Dec. 2016, https://stackoverflow.com/questions/41117733/validation-of-a-password-python. Accessed March 5, 2023
 
 
 # Appendix
