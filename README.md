@@ -469,6 +469,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.pickers import MDTimePicker
 from kivymd.uix.pickers import MDDatePicker
 from kivymd.uix.button import MDFlatButton
+import re
 import matplotlib.pyplot as plt
 from datetime import date
 
@@ -580,10 +581,17 @@ class SignupScreen(MDScreen):
         if self.ids.passwd.text == "":
             self.ids.passwd.error = True
             checker = False
-        if passwd != passwd_confirm:
+
+        pattern = r'^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()_+]).{8,}$'
+        # Check if the password matches the pattern
+        if not re.match(pattern, passwd):
             self.ids.passwd.error = True
+            return
+
+        if passwd != passwd_confirm:
             self.ids.passwd_confirm.error = True
             checker = False
+
         # Check if username exists
         db = database_worker("unit3project.db")
         query = f"SELECT * from users WHERE username ='{uname}'"
@@ -603,6 +611,9 @@ class SignupScreen(MDScreen):
             query = f"INSERT into users(username, password) values('{uname}','{hash}')"
             db.run_save(query)
             db.close()
+            dialog = MDDialog(title="Registration completed",
+                              text=f"Your account has been successfully registered.")
+            dialog.open()
             print("Registration completed")
             self.parent.current = "LoginScreen"
 
@@ -610,12 +621,21 @@ class SignupScreen(MDScreen):
             self.ids.passwd.text = ""
             self.ids.passwd_confirm.text = ""
 
+    # Function to toggle the password visibility
+    def toggle_show_password(self):
+        self.show_password = not self.show_password
+        self.ids.passwd.password = not self.show_password
+        self.ids.passwd_confirm.password = not self.show_password
+
     # When the user clicks the "Cancel" button
     def cancel(self):
         self.parent.current = "LoginScreen"
         self.ids.uname.text = ""
+        self.ids.uname.error = False
         self.ids.passwd.text = ""
+        self.ids.passwd.error = False
         self.ids.passwd_confirm.text = ""
+        self.ids.passwd_confirm.error = False
 
 # Class responsible for the Add Flight MDScreen
 class AddFlight(MDScreen):
@@ -915,6 +935,9 @@ class AirportMap(MDScreen):
                 ax.text(gate_pos[0] + 1, gate_pos[1], flight_number, ha='center', va='center', fontsize=10,
                         fontweight='bold', color='red')
 
+        # Show current date
+        ax.text(5, 9, today, ha='center', va='center', fontsize=12, fontweight='bold')
+
         # Show the plot
         plt.show()
 
@@ -1093,23 +1116,32 @@ ScreenManager:
             hint_text: "Enter password"
             icon_left: "lock"
             password: True
-            size_hint: 1, .1
             helper_text_mode: "on_error"
-            helper_text: "Please enter password"
+            helper_text: "Must include min. 8 characters with min. 1 special character"
 
 
         MDTextField:
             id:passwd_confirm
-            size_hint: 1, .1
             hint_text: "Confirm password"
-
             icon_left: "lock"
             password: True
-
             helper_text_mode: "on_error"
             helper_text: "Password does not match"
 
-
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, None
+            height: dp(40)
+            MDCheckbox:
+                id: show_pass
+                size_hint_x: 0.1
+                on_active: passwd.password = not self.active
+                on_active: passwd_confirm.password = not self.active
+                active: False
+            MDLabel:
+                text: "Show password"
+                font_size: 25
+                size_hint_x: 0.7
         MDBoxLayout:
             orientation: "horizontal"
             size_hint: 1, .1
