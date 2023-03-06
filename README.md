@@ -126,6 +126,7 @@ This is a method that is used to delete checked rows in a table. First, it gets 
 33	|	Create flow diagrams and write brief explanations for each       	|	Have accurate flow diagrams for different parts of the porgram with brief explanations	|	1 hour	|	3/5/2023	|	B
 34	|	Present final product to client	|	Meet with client to deliver the final product of the application	|	20 minutes	|	3/5/2023	|	A
 35	|	Finish Criteria C	|	Write the descriptions of the code and the detail of the techniques that were used `	|	2 hours	|	3/6/2023	|	C
+36	|	Finish video for Criteria D	|	Video evidence of all the success criterias functioning and working within the developed applicaiton	|	20 minutes	|	3/6/2023	|	D 
 
 # Criteria C: Development
 ## Techniques Used
