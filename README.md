@@ -464,7 +464,7 @@ The program above details how I was able to calculate the statistics for all fli
 
 ## Python Code
 ```.py
-import sqlite3
+from database_handler import database_worker
 from secure_password import encrypt_password, check_password
 from kivymd.app import MDApp
 from kivymd.uix.screen import MDScreen
@@ -477,23 +477,6 @@ from kivymd.uix.button import MDFlatButton
 import re
 import matplotlib.pyplot as plt
 from datetime import date
-
-#Class used to connect with and perform tasks on an SQLite3 database
-class database_worker:
-    def __init__(self, name):  # name of the sqlite3 db file
-        self.connection = sqlite3.connect(name)  # Establish a connection
-        self.cursor = self.connection.cursor()  # Create an object that will act as a cursor to perform commands
-
-    def search(self, query):  # Function for searching inside the db
-        result = self.cursor.execute(query).fetchall()  # Run a query and fetch the result
-        return result  # Return the found result
-
-    def run_save(self, query):  # Function to save information to the db
-        self.cursor.execute(query)  # Execute a query
-        self.connection.commit()  # Save changes to the db
-
-    def close(self):  # Close the connection to the db
-        self.connection.close()
 
 # Class responsible for the Homepage MDScreen
 class Homepage(MDScreen):
