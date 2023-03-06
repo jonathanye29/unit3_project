@@ -49,8 +49,8 @@ As showing above in Fig. 2, the wireframe details how the application will look.
 <i>Fig. 3</i> This is the ER Diagram showing the two tables: users, allflights. 
 
 ## UML Diagram
-![project3UML](https://user-images.githubusercontent.com/111751273/222328263-4e3694af-b5a2-4c57-8a6f-ae991b0908f0.jpeg)
-<i>Fig. 4</i> This is the UML Diagram showing all the classes and methods that were used in the development of the application. There are 2 main parent classes which are MDApp and MDScreen, that all methods and attributes from subclasses inherit, which can be shown by the arrows.
+![project3uml (1)](https://user-images.githubusercontent.com/111751273/223026201-2b814d9a-bbab-4fc1-8fdd-f006761bf004.jpeg)
+<i>Fig. 4</i> This is the UML diagram for the application, which displays the classes and methods that were used in its development. The diagram includes two main parent classes: MDApp and MDScreen. All subclasses inherit methods and attributes from these parent classes, as indicated by the arrows in the diagram.
 
 ## Flow Diagrams
 ![project3flowchart1](https://user-images.githubusercontent.com/111751273/222959574-c2700376-0e36-4e39-9bf6-49b6e391d8d6.jpeg)
