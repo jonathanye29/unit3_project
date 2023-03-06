@@ -427,6 +427,8 @@ percent_cancelled = cancelled[0][0] / total_flights * 100
 The program above details how I was able to calculate the statistics for all flights. My client wanted a page that would show the different statistics of flight statuses; for all flights on time, delayed, and cancelled. I chose to represent each statistic in percentage form, as it would give my client an easy way to compare the different flight statistics.
 
 # Criteria D: Functionality
+## Video Showcasing the Functionality of the Application
+
 
 
 # Citations
