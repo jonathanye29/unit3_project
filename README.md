@@ -122,15 +122,13 @@ This is a method that is used to delete checked rows in a table. First, it gets 
 
 # Criteria C: Development
 ## Techniques Used
-1. Object Oriented Programming (OOP)
-2. KivyMD Library
-3. SQLite Database
+1. Object Oriented Programming (OOP): Classes, Inheritance 
+2. SQLite Database
+3. Variables
 4. For loops
 5. If statements
-6. Matplotlib
+6. Plotting graphs
 7. Functions
-8. Classes
-9. Inheritence
 
 ## Development of User Interface Using KivyMD
 
