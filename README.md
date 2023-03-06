@@ -428,7 +428,7 @@ The program above details how I was able to calculate the statistics for all fli
 
 # Criteria D: Functionality
 ## Video Showcasing the Functionality of the Application
-
+Video link: https://youtu.be/Sagre4hGJtU
 
 
 # Citations
