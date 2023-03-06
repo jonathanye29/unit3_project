@@ -63,7 +63,7 @@ This method is used to search for flight information in a database. It creates a
 
 This method is used to add flight information to a database. It first validates the input fields to ensure that they are not empty. If all the fields are valid, it connects to a SQLite database using the database_worker class and runs an SQL query to insert the flight information into the database. It then displays a pop-up message indicating that the flight has been successfully added to the database. Finally, it clears the input fields so that the user can add another flight.
 
-![project3flowchart3 jpg](https://user-images.githubusercontent.com/111751273/222962807-12226801-21f7-4e3d-b8a4-bb03bd28a37e.jpeg)
+![project3flowchart3 jpg (1)](https://user-images.githubusercontent.com/111751273/223020533-453cc1e2-da9d-4d22-a47e-d57c31416998.jpeg)
 <i>Fig. 7</i> This is the flow diagram that details the process of how the delete method works.
 
 This is a method that is used to delete checked rows in a table. First, it gets the checked rows from the table. Then it connects to a SQLite database and loops through each checked row to execute a delete query for that particular row using the id field as a reference. After each row is deleted, an alert dialog is created and opened to confirm that the row has been successfully deleted. Finally, the database connection is closed and the table is updated to reflect the changes.
