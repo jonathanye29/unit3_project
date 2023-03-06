@@ -1,0 +1,777 @@
+ScreenManager:
+
+    LoginScreen:
+        name: "LoginScreen"
+
+    SignupScreen:
+        name: "SignupScreen"
+
+    Homepage:
+        name: "Homepage"
+
+    AddFlight:
+        name: "AddFlight"
+
+    FlightHistory:
+        name: "FlightHistory"
+
+    SearchFlight:
+        name: "SearchFlight"
+
+    AirportMap:
+        name: "AirportMap"
+
+    FlightStatistics:
+        name: "FlightStatistics"
+
+<LoginScreen>:
+    size: 500, 500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .5, .9
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(50)
+        md_bg_color: "#F4F4F6"
+
+        MDLabel:
+            text: "Login"
+            font_style: "H2"
+            size_hint: 1, .4
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(120)
+
+            MDTextField:
+                id: uname
+                hint_text: "Please enter your username"
+                icon_left: "account"
+                helper_text_mode: "on_error"
+                helper_text: "Please enter username"
+
+            MDTextField:
+                id: passwd
+                hint_text: "Enter your password"
+                icon_left: "lock"
+                password: not show_pass.active
+                helper_text_mode: "on_error"
+                helper_text: "Password does not match"
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, None
+                height: dp(40)
+                MDCheckbox:
+                    id: show_pass
+                    size_hint_x: 0.1
+                    on_active: passwd.password = not self.active
+                    active: False
+                MDLabel:
+                    text: "Show password"
+                    font_size: 25
+                    size_hint_x: 0.7
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+
+            MDRaisedButton:
+                id: login
+                text: "Login"
+                on_press: root.try_login()
+                size_hint: .3, .4
+                md_bg_color: "#8dbcd6"
+
+            MDLabel:
+                size_hint: .3, 1
+
+            MDRaisedButton:
+                id: signup
+                text: "Register"
+                on_press: root.try_register()
+                size_hint: .3, .4
+                md_bg_color: "#8dbcd6"
+
+<SignupScreen>:
+    size: 500, 500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .5, .9
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(50)
+        md_bg_color: "#F4F4F6"
+
+
+        MDLabel:
+            text: "Register"
+            font_style: 'H2'
+            size_hint: 1, .2
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDLabel:
+            size_hint: 1, .1
+
+        MDTextField:
+            id:uname
+            hint_text: "Enter username"
+            icon_left: "account"
+            helper_text_mode: "on_error"
+            helper_text: "Please enter username"
+
+        MDTextField:
+            id:passwd
+            hint_text: "Enter password"
+            icon_left: "lock"
+            password: True
+            helper_text_mode: "on_error"
+            helper_text: "Must include min. 8 characters with min. 1 special character"
+
+
+        MDTextField:
+            id:passwd_confirm
+            hint_text: "Confirm password"
+            icon_left: "lock"
+            password: True
+            helper_text_mode: "on_error"
+            helper_text: "Password does not match"
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, None
+            height: dp(40)
+            MDCheckbox:
+                id: show_pass
+                size_hint_x: 0.1
+                on_active: passwd.password = not self.active
+                on_active: passwd_confirm.password = not self.active
+                active: False
+            MDLabel:
+                text: "Show password"
+                font_size: 25
+                size_hint_x: 0.7
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+
+            MDRaisedButton:
+                id: register_submit
+                text: "Submit"
+                on_press: root.try_register()
+                size_hint: .3, .65
+                md_bg_color: "#8dbcd6"
+
+            MDLabel:
+                size_hint: .3, 1
+
+            MDRaisedButton:
+                id:register_cancel
+                text: "Cancel"
+                on_press: root.cancel()
+                size_hint: .3, .65
+                md_bg_color: "#8dbcd6"
+
+<Homepage>:
+    size:500,500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .5, .9
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(50)
+        md_bg_color: "#F4F4F6"
+
+        MDLabel:
+            text: "Welcome to Air Traffic Control"
+            underline: True
+            font_style: "H5"
+            size_hint: 1, .1
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, .8
+            spacing: 50
+
+            MDLabel:
+                size_hint: 1, .05
+
+            MDFillRoundFlatIconButton:
+                icon: "airplane-takeoff"
+                text: "Add Flight"
+                on_release: app.root.current = 'AddFlight'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: .5, .05
+
+
+            MDFillRoundFlatIconButton:
+                icon: "history"
+                text: "Flight History"
+                on_release: app.root.current = 'FlightHistory'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: .5, .05
+
+            MDFillRoundFlatIconButton:
+                icon: "airplane-search"
+                text: "Search Flight"
+                on_release: app.root.current = 'SearchFlight'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: .5, .05
+
+
+            MDFillRoundFlatIconButton:
+                icon: "map-marker"
+                text: "Airport Flight Map"
+                on_release: app.root.current = 'AirportMap'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: .5, .05
+
+
+            MDFillRoundFlatIconButton:
+                icon: "information"
+                text: "Flight Statistics"
+                on_release: app.root.current = 'FlightStatistics'
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: .5, .05
+
+
+            MDFillRoundFlatIconButton:
+                id: logout_button
+                text: "Logout"
+                icon: "logout"
+                on_release: root.try_logout()
+                md_bg_color: "#8dbcd6"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint: .5, .05
+
+<AddFlight>:
+    size:500,500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .85, .95
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        md_bg_color: "#F4F4F6"
+        padding: dp(10)
+
+        MDLabel:
+            text: "Add Flight"
+            underline: True
+            font_style: "H5"
+            size_hint: 1, .05
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDTextField:
+            id: flight_number
+            hint_text: "Please enter flight number"
+            icon_left: "airplane"
+            helper_text_mode: "on_error"
+            helper_text: "Please enter flight number"
+
+        MDTextField:
+            id: destination
+            hint_text: "Please enter flight destination"
+            icon_left: "airplane-takeoff"
+            helper_text_mode: "on_error"
+            helper_text: "Please enter flight destination"
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+
+            MDRaisedButton:
+                id: time_button
+                text: "Select flight time"
+                md_bg_color: "#8dbcd6"
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                on_press: root.show_time_picker()
+
+            MDLabel:
+                size_hint: 0.1, 1
+
+            MDLabel:
+                id: flight_schedule
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+
+            MDRaisedButton:
+                id:date_button
+                text: "Select flight date"
+                text_pos_hint: {"center_x":1}
+                md_bg_color: "#8dbcd6"
+                size_hint: .5, .5
+                pos_hint: {"center_x":.5, "center_y":.5}
+                on_press: root.date()
+
+            MDLabel:
+                size_hint: 0.1, 1
+
+            MDLabel:
+                id: date
+
+        MDBoxLayout:
+            id:terminal
+            size_hint: 1, .1
+            pos_hint: {"center_x":.5}
+
+            MDLabel:
+                size_hint: 1,.5
+                font_size: 30
+                pos_hint: {"center_y":.5}
+                text: "Terminals:"
+
+            MDCheckbox:
+                id: terminal1
+                group: 'terminals' #this group is so that all the checkboxes are linked and only one can be selected
+                size_hint: None, None
+                size: dp(48), dp(48)
+                active: True
+                on_active: root.checkbox_click(self, self.active, "T1")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'Terminal 1'
+                pos_hint: {"center_y":.5}
+                font_size:30
+
+            MDCheckbox:
+                id: terminal2
+                group: 'terminals'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click(self, self.active, "T2")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'Terminal 2'
+                pos_hint: {"center_y":.5}
+                font_size:30
+        MDLabel:
+            size_hint: 1,.1
+            font_size: 30
+            pos_hint: {"center_y":.5}
+            text: "Gates:"
+        MDBoxLayout:
+            id:gate_number
+            size_hint: 1, .1
+            pos_hint: {"center_x":.5}
+
+            MDCheckbox:
+                id:a1
+                group: 'gates' #this group is so that all the checkboxes are linked and only one can be selected
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_gate(self, self.active, "A1")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'A1'
+                font_size:20
+                pos_hint: {"center_y":.5}
+
+            MDCheckbox:
+                id: a2
+                group: 'gates'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_gate(self, self.active, "A2")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'A2'
+                pos_hint: {"center_y":.5}
+                font_size:16
+
+            MDCheckbox:
+                id: a3
+                group: 'gates'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_gate(self, self.active, "A3")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'A3'
+                pos_hint: {"center_y":.5}
+                font_size:16
+
+            MDCheckbox:
+                id: a4
+                group: 'gates'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_gate(self, self.active, "A4")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'A4'
+                pos_hint: {"center_y":.5}
+                font_size:16
+
+            MDCheckbox:
+                id: b1
+                group: 'gates'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_gate(self, self.active, "B1")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'B1'
+                pos_hint: {"center_y":.5}
+                font_size:16
+
+            MDCheckbox:
+                id: b2
+                group: 'gates'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_gate(self, self.active, "B2")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'B2'
+                pos_hint: {"center_y":.5}
+                font_size:16
+
+            MDCheckbox:
+                id: b3
+                group: 'gates'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_gate(self, self.active, "B3")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'B3'
+                pos_hint: {"center_y":.5}
+                font_size:16
+
+            MDCheckbox:
+                id: b4
+                group: 'gates'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_gate(self, self.active, "B4")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'B4'
+                pos_hint: {"center_y":.5}
+                font_size:16
+
+        MDBoxLayout:
+            id:status
+            size_hint: 1, .1
+            pos_hint: {"center_x":.5}
+
+            MDLabel:
+                size_hint: 1,.5
+                font_size: 30
+                pos_hint: {"center_y":.5}
+                text: "Status:"
+
+            MDCheckbox:
+                id: ontime
+                group: 'status' #this group is so that all the checkboxes are linked and only one can be selected
+                size_hint: None, None
+                size: dp(48), dp(48)
+                active: True
+                on_active: root.checkbox_click_status(self, self.active, "on time")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'on time'
+                pos_hint: {"center_y":.5}
+                font_size:30
+
+            MDCheckbox:
+                id: delayed
+                group: 'status'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_status(self, self.active, "delayed")
+                pos_hint: {"center_y":.5}
+
+            MDLabel:
+                text: 'delayed'
+                pos_hint: {"center_y":.5}
+                font_size:30
+
+            MDCheckbox:
+                id: cancelled
+                group: 'status'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_status(self, self.active, "cancelled")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'cancelled'
+                pos_hint: {"center_y":.5}
+                font_size:30
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, None
+
+            MDLabel:
+                size_hint: .1, 1
+
+            MDRaisedButton:
+                id: addflight_submit
+                text: "Submit"
+                on_press: root.add_flight()
+                size_hint: .2, .5
+                md_bg_color: "#8dbcd6"
+
+            MDLabel:
+                size_hint: .1, 1
+
+            MDRaisedButton:
+                id: addflight_clear
+                text: "Clear"
+                on_press: root.clear()
+                size_hint: .2, .5
+                md_bg_color: "#8dbcd6"
+
+            MDLabel:
+                size_hint: .1, 1
+
+            MDRaisedButton:
+                id: addflight_cancel
+                text: "Return home"
+                on_press: root.cancel()
+                size_hint: .2, .5
+                md_bg_color: "#8dbcd6"
+
+            MDLabel:
+                size_hint: .1, 1
+
+        MDLabel:
+            size_hint:1, .05
+
+<FlightHistory>:
+    size:500,500
+    FitImage:
+        source: "background.jpg"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDLabel:
+            text: "Flight History"
+            underline: True
+            halign: "center"
+            font_style: "H4"
+            size_hint: 1, .1
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .9
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint: .8, .1
+
+                MDLabel:
+                    size_hint: .1, 1
+
+                MDRaisedButton:
+                    id: delete_flight
+                    text: "Delete Selected Flight(s)"
+                    size_hint: .2, 0.65
+                    pos_hint: {"center_y": .7}
+                    on_press: root.delete()
+                    md_bg_color: "#8dbcd6"
+
+                MDLabel:
+                    size_hint: .2, 1
+
+                MDRaisedButton:
+                    id: return_home
+                    text: "Return home"
+                    size_hint: .2, 0.65
+                    pos_hint: {"center_y": .7}
+                    on_press: app.root.current = 'Homepage'
+                    md_bg_color: "#8dbcd6"
+
+                MDLabel:
+                    size_hint: .1, 1
+
+<SearchFlight>:
+    size:500,500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .5, .9
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(50)
+        md_bg_color: "#F4F4F6"
+
+        MDLabel:
+            text: "Search Flight"
+            font_style: "H3"
+            size_hint: 1, .4
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(120)
+
+            MDTextField:
+                id: flight_number
+                hint_text: "Please enter flight number"
+                icon_left: "airplane"
+                helper_text_mode: "on_error"
+                helper_text: "Please enter flight number"
+
+            MDRaisedButton:
+                id:date
+                text: "Select flight date"
+                text_pos_hint: {"center_x":1}
+                md_bg_color: "#8dbcd6"
+                size_hint: .5, .05
+                pos_hint: {"center_x":.5, "center_y":.5}
+                on_press: root.date()
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+
+            MDRaisedButton:
+                id: search
+                text: "Search"
+                on_press: root.search()
+                size_hint: .3, .4
+                md_bg_color: "#8dbcd6"
+
+            MDLabel:
+                size_hint: .3, 1
+
+            MDRaisedButton:
+                id: search_cancel
+                text: "Return home"
+                on_press: root.cancel()
+                size_hint: .3, .4
+                md_bg_color: "#8dbcd6"
+
+
+<AirportMap>
+    size:500,500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .5, .9
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(50)
+        md_bg_color: "#F4F4F6"
+
+        MDLabel:
+            text: "Airport Map"
+            font_style: "H3"
+            size_hint: 1, .8
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDLabel:
+            text: "Please click on the map to view all flights at their gate number"
+            font_style: "H5"
+            halign: "center"
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+
+            MDRaisedButton:
+                on_press: root.show_map()
+                text: "Show Map"
+                md_bg_color: "#8dbcd6"
+
+            MDLabel:
+                size_hint: .3, 1
+
+            MDRaisedButton:
+                id: map_cancel
+                text: "Return home"
+                on_press: app.root.current = 'Homepage'
+                md_bg_color: "#8dbcd6"
+
+<FlightStatistics>:
+    size:500,500
+    FitImage:
+        source: "background.jpg"
+
+    MDCard:
+        size_hint: .5, .9
+        elevation: 2
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(50)
+        md_bg_color: "#F4F4F6"
+
+        MDLabel:
+            text: "Flight Statistics"
+            font_style: "H4"
+            underline: True
+            size_hint: 1, .4
+            halign: "center"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, .8
+
+
+            MDLabel:
+                id: ontime
+                font_size: 35
+
+            MDLabel:
+                id: delayed
+                font_size: 35
+
+            MDLabel:
+                id: cancelled
+                font_size: 35
+
+            MDLabel:
+                size_hint: 1, .05
+
+            MDRaisedButton:
+                id: stats_cancel
+                text: "Return home"
+                size_hint: .5, .1
+                pos_hint: {"center_x": .5, "center_y": .5}
+                on_press: app.root.current = 'Homepage'
+                md_bg_color: "#8dbcd6"
