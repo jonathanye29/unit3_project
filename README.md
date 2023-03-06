@@ -110,7 +110,7 @@ This is a method that is used to delete checked rows in a table. First, it gets 
 17	|	Add checkboxes to add flight system	|	Implement the usage of checkboxes for value selection. Have checkboxes for different pieces of flight information for the user to select from.	|	1 hour	|	2/27/2023	|	C
 18	|	Create search system for specific flights	|	Allow the user to search for specific flights by flight number and date.	|	1 hour	|	2/28/2023	|	C
 19	|	Draw a wire frame and write an explanation of it	|	Have a clear wire frame that accurately represents and describes the application and have a brief explanation	|	1 hour	|	2/28/2023	|	B
-20	|	Create airport map page	|	Have a page that shows a map of the airport and the current date's flights at their gate	|	3 hours	|	3/1/2023	|	C
+20	|	Create airport map page	|	Have a page that shows a map of the airport and the current date's flights at their gate	|	2 hours	|	3/1/2023	|	C
 21	|	Create flight history page	|	Have a page that shows all values stored within the database	|	1 hour	|	3/1/2023	|	C
 22	|	Validate all buttons and their actions	|	Making sure that each button executes the expected task and is accurately displayed within the application	|	1 hour	|	3/1/2023	|	C
 23	|	Create table displaying the results of searched flights	|	Retrieving requested data from the database of all flights, and displaying them in an organized table 	|	1 hour	|	3/1/2023	|	C
