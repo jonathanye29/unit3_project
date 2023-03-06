@@ -143,11 +143,12 @@ ScreenManager:
 ```
 The client requires an application that allows them to record and store flight information. Developing a user interface is best fit for thier need as it is easier to use and visually appealing.
 
-The KV code snippet above shows a ScreenManager with a single screen called "LoginScreen". To create additional screens for the flight information application, I followed a similar structure by defining each screen with a unique name and id within the ScreenManager. For example, I created a signup screen with a name of "SignpScreen". I repeated this process for each screen in the application, such as the "homepage", "add flight screen", "flight history screen", "search flight screen", "airport map screen", and "flight statistics screen".
+The KV code snippet above shows a ScreenManager with a single screen called "LoginScreen". To create additional screens for the flight information application, I followed a similar structure by defining each screen with a unique name and id within the ScreenManager. For example, I created a signup screen with a name of "SignupScreen". I repeated this process for each screen in the application, such as the "Homepage" screen, "AddFlight" screen, "FlightHistory" screen, "SearchFlight" screen, "AirportMap" screen, and "FlightStatistics" screen.
 
-Each screen is defined using a separate KV code block that specifies the layout and widgets for that screen. For example, the "add flight screen" might include text input fields for the user to enter flight information, while the "flight history screen" might display a list of previously recorded flights.
+Each screen is defined using a separate KV code block that specifies the layout and widgets for that screen. For example, the "AddFlight" screen might include text input fields for the user to enter flight information, while the "FlightHistory" screen might display a list of previously recorded flights.
 
-By using a ScreenManager and defining each screen as a separate widget, I can easily switch between screens and manage the application flow. For example, when the user logs in or signs up, I can switch from the "LoginScreen" or "SignupScreen" to the "Homepage". Similarly, I can navigate from the "HomePageScreen" to the "AddFlightScreen" when the user wants to record a new flight, or to the "FlightHistoryScreen" to view past flights. This approach allows for a more organized and user-friendly interface, and can help improve the overall user experience.
+By using a ScreenManager and defining each screen as a separate widget, I can easily switch between screens and manage the application flow. For example, when the user logs in or signs up, I can switch from the "LoginScreen" or "SignupScreen" to the "Homepage" screen. Similarly, I can navigate from the "Homepage" screen to the "AddFlight" screen when the user wants to record a new flight, or to the "FlightHistory" screen to view past flights. This approach allows for a more organized and user-friendly interface, and can help improve the overall user experience.
+
 ### General Application Screen
 ```.kv
 <LoginScreen>:
