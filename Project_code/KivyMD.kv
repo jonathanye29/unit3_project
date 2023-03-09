@@ -24,81 +24,89 @@ ScreenManager:
     FlightStatistics:
         name: "FlightStatistics"
 
-<LoginScreen>:
-    size: 500, 500
-    FitImage:
-        source: "background.jpg"
+# Login Screen
+<LoginScreen>:                             # Defines a new class 'LoginScreen'
+    size: 500, 500                         # Sets the size of the login screen widget
+    FitImage:                               # A custom widget that scales the image to fit the screen
+        source: "background.jpg"            # Sets the source file for the background image
 
-    MDCard:
-        size_hint: .5, .9
-        elevation: 2
-        orientation: "vertical"
-        pos_hint: {"center_x": .5, "center_y": .5}
-        padding: dp(50)
-        md_bg_color: "#F4F4F6"
+    MDCard:                                 # A material design card widget
+        size_hint: .5, .9                   # Sets the relative size of the card widget
+        elevation: 2                        # Sets the elevation of the card (shadow effect)
+        orientation: "vertical"             # Sets the orientation of the card widget
+        pos_hint: {"center_x": .5, "center_y": .5}   # Sets the position of the card widget
+        padding: dp(50)                     # Sets the padding of the card widget
+        md_bg_color: "#F4F4F6"              # Sets the background color of the card widget
 
-        MDLabel:
-            text: "Login"
-            font_style: "H2"
-            size_hint: 1, .4
-            halign: "center"
-            pos_hint: {"center_x": .5, "center_y": .5}
+        MDLabel:                            # A material design label widget
+            text: "Login"                  # Sets the text of the label
+            font_style: "H2"               # Sets the font style of the label
+            size_hint: 1, .4                # Sets the relative size of the label
+            halign: "center"               # Sets the horizontal alignment of the label
+            pos_hint: {"center_x": .5, "center_y": .5}   # Sets the position of the label
 
-        MDBoxLayout:
-            orientation: "vertical"
-            size_hint: 1, None
-            height: dp(120)
+        MDBoxLayout:                        # A material design box layout widget
+            orientation: "vertical"         # Sets the orientation of the box layout
+            size_hint: 1, None              # Sets the relative size of the box layout
+            height: dp(120)                 # Sets the fixed height of the box layout
 
-            MDTextField:
-                id: uname
-                hint_text: "Please enter your username"
-                icon_left: "account"
-                helper_text_mode: "on_error"
-                helper_text: "Please enter username"
+            MDTextField:                    # A material design text field widget
+                id: uname                   # Sets the ID of the text field
+                hint_text: "Please enter your username"    # Sets the hint text of the text field
+                icon_left: "account"        # Sets the icon of the text field
+                helper_text_mode: "on_error"    # Sets the helper text mode of the text field
+                helper_text: "Please enter username"  # Sets the helper text of the text field
 
-            MDTextField:
-                id: passwd
-                hint_text: "Enter your password"
-                icon_left: "lock"
-                password: not show_pass.active
-                helper_text_mode: "on_error"
-                helper_text: "Password does not match"
+            MDTextField:                    # Another material design text field widget
+                id: passwd                  # Sets the ID of the text field
+                hint_text: "Enter your password"    # Sets the hint text of the text field
+                icon_left: "lock"           # Sets the icon of the text field
+                password: not show_pass.active  # Sets the password mode of the text field
+                helper_text_mode: "on_error"    # Sets the helper text mode of the text field
+
 
             MDBoxLayout:
-                orientation: "horizontal"
-                size_hint: 1, None
-                height: dp(40)
-                MDCheckbox:
-                    id: show_pass
-                    size_hint_x: 0.1
-                    on_active: passwd.password = not self.active
-                    active: False
-                MDLabel:
-                    text: "Show password"
-                    font_size: 25
-                    size_hint_x: 0.7
+                orientation: "horizontal"        # set the orientation of the box to horizontal
+                size_hint: 1, None              # set the width to 100% and the height to None
+                height: dp(40)                  # set the height of the box to 40 density-independent pixels (dp)
+
+                MDCheckbox:                      # create a Material Design checkbox
+                    id: show_pass                # set an id for the checkbox
+                    size_hint_x: 0.1             # set the width of the checkbox to 10% of the box's width
+                    on_active: passwd.password = not self.active  # set the password field to show/hide based on the checkbox's active state
+                    active: False                # set the initial state of the checkbox to False (unchecked)
+
+                MDLabel:                         # create a Material Design label
+                    text: "Show password"        # set the text of the label
+                    font_size: 25                # set the font size of the label
+                    size_hint_x: 0.7             # set the width of the label to 70% of the box's width
 
         MDBoxLayout:
-            orientation: "horizontal"
-            size_hint: 1, .1
+            orientation: "horizontal"        # set the orientation of the box to horizontal
+            size_hint: 1, .1                # set the width to 100% and the height to 10% of the parent's height
 
-            MDRaisedButton:
-                id: login
-                text: "Login"
-                on_press: root.try_login()
-                size_hint: .3, .4
-                md_bg_color: "#8dbcd6"
+            MDRaisedButton:                  # create a Material Design raised button
+                id: login                    # set an id for the button
+                text: "Login"                # set the text of the button
+                on_press: root.try_login()   # set the function to call when the button is pressed
+                size_hint: .3, .4            # set the width and height of the button to 30% and 40% of the parent's size, respectively
+                md_bg_color: "#8dbcd6"       # set the background color of the button
 
-            MDLabel:
-                size_hint: .3, 1
+            MDLabel:                         # create a Material Design label
+                size_hint: .3, 1             # set the width and height of the label to 30% and 100% of the parent's size, respectively
 
-            MDRaisedButton:
-                id: signup
-                text: "Register"
-                on_press: root.try_register()
-                size_hint: .3, .4
-                md_bg_color: "#8dbcd6"
+            MDRaisedButton:                  # create another Material Design raised button
+                id: signup                   # set an id for the button
+                text: "Register"             # set the text of the button
+                on_press: root.try_register()  # set the function to call when the button is pressed
+                size_hint: .3, .4            # set the width and height of the button to 30% and 40% of the parent's size, respectively
+                md_bg_color: "#8dbcd6"       # set the background color of the button
 
+
+
+
+
+# Signup Screen
 <SignupScreen>:
     size: 500, 500
     FitImage:
@@ -182,6 +190,7 @@ ScreenManager:
                 size_hint: .3, .65
                 md_bg_color: "#8dbcd6"
 
+# Homepage Screen
 <Homepage>:
     size:500,500
     FitImage:
@@ -264,6 +273,7 @@ ScreenManager:
                 pos_hint: {"center_x": .5, "center_y": .5}
                 size_hint: .5, .05
 
+# Add Flight Screen
 <AddFlight>:
     size:500,500
     FitImage:
@@ -573,6 +583,7 @@ ScreenManager:
         MDLabel:
             size_hint:1, .05
 
+# Flight History Screen
 <FlightHistory>:
     size:500,500
     FitImage:
@@ -621,6 +632,7 @@ ScreenManager:
                 MDLabel:
                     size_hint: .1, 1
 
+# Search Flight Screen
 <SearchFlight>:
     size:500,500
     FitImage:
@@ -683,7 +695,7 @@ ScreenManager:
                 size_hint: .3, .4
                 md_bg_color: "#8dbcd6"
 
-
+# Airport Map Screen
 <AirportMap>
     size:500,500
     FitImage:
@@ -727,6 +739,7 @@ ScreenManager:
                 on_press: app.root.current = 'Homepage'
                 md_bg_color: "#8dbcd6"
 
+# Flight Statistics Screen
 <FlightStatistics>:
     size:500,500
     FitImage:
@@ -775,3 +788,5 @@ ScreenManager:
                 pos_hint: {"center_x": .5, "center_y": .5}
                 on_press: app.root.current = 'Homepage'
                 md_bg_color: "#8dbcd6"
+                
+                
